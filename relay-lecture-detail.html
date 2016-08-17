@@ -1,0 +1,518 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load useful %}
+
+{% block header %}
+    <link rel="stylesheet" href="{% getsetting 'RESOURCE_URL' %}{% static 'css/lecture-detail.css' %}"/>
+    {% if need_password %}
+    <style> .wrapper { padding-bottom: 140px; } </style>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<!--主体begin-->
+<div class="wrapper lesson-detail" id="Change_padding">
+    <!--顶部图片begin-->
+    <div class="lesson-detail-head lesson-cover">
+        <img class="lesson-cover-img" src="{{lecture.get_cover_url}}" alt=""/>
+        <div class="home">
+            <a class="btn-home" onclick="share()" href="/"><i class="iconfont">&#xe619;</i></a>
+        </div>
+        <div class="lesson-name">
+            <p>{{lecture.name}}</p>
+        </div>
+    </div>
+    <!--顶部图片end-->
+    
+    <!--xuehui-查看转播收益-star-->
+    {% if lecture.account == request.account %}
+    <div class="box">
+        <a href="/pay/invoice_record">
+            <div class="subtitle_new">
+                <p class="clearfix"><i class="iconfont left-i">&#xe647;</i>转播收益<i class="iconfont" style="line-height: 32px; float: right;">&#xe60f;</i><span class="relay-profit"></span></p>
+            </div>
+        </a>
+    </div>
+    {% endif %}
+    <!--xuehui-查看转播收益-end-->
+
+    <!--课程介绍 begin -->
+    <div class="lesson-intro">
+        <div class="lesson-name">
+            <p>{{lecture.name}}</p>
+        </div>
+        <div class="lesson-info-bar">
+            <span><i class="iconfont">&#xe609;</i>{{lecture.get_start_time}}</span>
+	        <span>
+	                {% if is_lecturer and not lecture.is_started %}
+	                  <i class="iconfont">&#xe63a;</i>
+	                  {{lecture.get_subscribe_count}}预约
+	                {% else %}
+	                  <i class="iconfont">&#xe604;</i>
+	                  {{lecture.popular}}人气
+	                {% endif %}
+	        </span>
+        </div>
+        <div class="lesson-intro-dec">
+            <p>{{lecture.description | linebreaksbr}}</p>
+        </div>
+    </div>
+    <!--课程介绍end-->
+
+
+    <!--讲师介绍 begin -->
+    <div class="box">
+        <div class="subtitle_new">
+            <p><i class="iconfont left-i">&#xe647;</i>人物介绍<a href="{% url 'board:profile' %}?aid={{ lecture.account.id }}" class="teach-studio">TA的直播间<i class="iconfont">&#xe60f;</i></a></p>
+        </div>
+        {% for lecturer in lecture.get_lecturers %}
+        <div class="line"></div>
+        <div class="row tutor-item" id="lecturer_{{lecturer.id}}" data-aid="{{lecturer.account.id}}" data-lecture-id="{{lecture.id}}" data-lecturer-id="{{lecturer.id}}">
+            <div class="small-2 columns">
+                <a href="{% url 'board:profile' %}?aid={{lecturer.account.id}}">
+                    <div class="portrait">
+                        <img src="{{lecturer.account.get_headimg_132}}" alt=""/>
+                    </div>
+                </a>
+            </div>
+            <div class="small-7 columns">
+                <p class="intro-title">{{lecturer.account.nickname}}<span class="intro-tag">{{lecturer.title}}</span></p>
+                <p class="intro-dec">{{lecturer.account.introduction | linebreaksbr}}</p>
+            </div>
+            <div class="small-3 columns"></div>
+        </div>
+        {% endfor %}
+    </div>
+    <!--人物介绍 end -->
+
+    <!--扫码 begin -->
+    <div class="box">
+        {% if lecture.id == 310 %}
+        <div class="subtitle">
+            <p>关注公众号</p>
+        </div>
+        <div class="line"></div>
+        <div class="appoint-qrcode-img">
+            <p>长按二维码关注公众号，回复“车晓”查看密码</p>
+            <img src="/media/qrcode/yanglan_qrcode.jpg" alt=""/>
+        </div>
+        {% else %}
+        <div class="subtitle_new">
+            {% if custom_qrcode %}
+            <p><i class="iconfont left-i">&#xe647;</i>关注公众号</p>
+            {% else %}
+            <p><i class="iconfont left-i">&#xe647;</i>扫码预约课程</p>
+            {% endif %}
+        </div>
+        <div class="line"></div>
+        <div class="appoint-qrcode-img">
+            {% if custom_qrcode.description %}
+            <p>{{ custom_qrcode.description }}</p>
+            {% else %}
+            <p>知识不容错过，预约即可接受开课提醒</p>
+            {% endif %}
+            {% if custom_qrcode.qrcode_image %}
+            <img src="{{ custom_qrcode.get_qrcode_url }}" alt=""/>
+            {% else %}
+            <img src="{{ lecture.get_qrcode_url }}" alt=""/>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+    <!--扫码 end -->
+
+    <!-- 技术说明 begin-->
+    <div class="technical_support_box"><!--技术支持-->
+    	<span>荔枝微课  - 提供技术支持</span>
+    </div>
+    <!-- 技术说明 end-->
+</div>
+<!-- 主体 end -->
+
+
+<!-- 扫码提醒 弹框 begin-->
+<div class="dialog dialog-qrcode" id="qrcode">
+    <div class="dialog-cnt">
+        <img class="qrcode-header" src="{% getsetting 'RESOURCE_URL' %}{% static 'img/qrcode-header.png' %}" alt=""/>
+        <img src="{{ lecture.get_qrcode_url }}" alt=""/>
+
+        <p>扫码预约课程<br/>
+                        您将在课堂开始前收到提醒</p>
+
+        <div class="line"></div>
+        <a class="btn-qrcode-close" href="javascript:;">关闭</a>
+    </div>
+</div>
+<!-- 扫码提醒 弹框 end-->
+
+<!-- 编辑嘉宾 弹框 begin-->
+<div class="dialog dialog-edit-tutor">
+    <div class="dialog-cnt dialog-edit-cnt">
+        <a href="javascript:;" class="btn-edit-close"><i class="iconfont">&#xe618;</i></a>
+
+        <form action="">
+            <div class="row">
+                <p>编辑嘉宾头衔</p>
+
+                <div class="small-12 columns">
+                    <input type="text" placeholder="讲师／嘉宾／主持人" id="title-input"/>
+                </div>
+                <div class="small-12 columns">
+                    <a class="button btn btn-correct-edit" href="javascript:;">确&nbsp;&nbsp;定</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- 编辑嘉宾 弹框 end-->
+
+<!-- 进入课堂下方bar begin-->
+<!-- 以下是进入课程按钮bar -->
+<div class="box btn-group">
+    {% if need_password %}
+    <div class="decryption" style="padding: 16px 0">
+        <div>
+            <div class="row">
+                <div class="small-12 columns">
+                    <input type="text" placeholder="请输入密钥" id="lecture-password"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-12 columns">
+                    <a class="button btn verify-password" href="javascript:;">进入课堂</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% elif need_money %}
+    <!--<div class="pay-lecture" id="btn_display_popups">-->
+    <div class="pay-lecture">
+        <!-- 优惠券以及支付说明 begin-->
+        <div class="box btn-group" id="popups_outside_box"><!--xuehui-付费课程修改-->
+            <div class="pay-lecture" id="popups_content_box">
+                {% if lecture.has_discount %}
+                <div class="fill_code_box">
+                    <div class="row fill_code">
+                        <span class="small-3 columns">优惠码</span>
+                        <div class="small-9 columns check_coupon">
+                            <input class="" type="number" placeholder="请填写优惠码" id="input_code"/>
+                        </div>
+                    </div>
+                    <span class="check_coupon_right" id="warn_code" style="display:none">请输入优惠码</span>
+                    <div class="pay_message_detailes">
+                        <p>原价 ¥{{lecture.money}},已使用优惠券抵扣 <span class="need_pay" id="coupon_paid">¥0.00</span></p>
+                    </div>
+                </div>
+                <a class="button btn btn-pay-lecture" href="javascript:;">需要支付<span id="pay_more"> ¥{{ lecture.money }}</span></a>
+                 <script>
+                	document.getElementById('Change_padding').style.paddingBottom='140px';
+                </script>
+                {% else %}
+                <a class="button btn btn-pay-lecture" href="javascript:;">付费课程<span id="pay_more"> ¥{{ lecture.money }}</span></a>
+                {% endif %}
+            </div>
+        </div>       	
+        <!-- 优惠券以及支付说明end-->     
+    </div>
+
+    {% else %}
+    <div class="row btn-group ">
+        {% if is_lecturer %}
+        <div class="small-6 columns">
+            <a class="button btn btn-edit btn-delete-lecture" id="btn_delete_lecture">
+                <i class="iconfont">&#xe613;</i>删除课程
+            </a>
+        </div>
+
+        <div class="small-6 columns">
+            <a class="button btn btn-lesson" href="{% url 'lecture:classroom' %}?id={{lecture.id}}">
+                <i class="iconfont">&#xe612;</i>进入课堂
+            </a>
+        </div>
+        {% else %}
+            {% if started %}
+            <div class="small-12 columns">
+                <a class="button btn btn-lesson" href="{% url 'lecture:classroom' %}?id={{lecture.id}}">
+                    <i class="iconfont">&#xe612;</i>进入课堂
+                </a>
+            </div>
+
+            {% else %}
+            <div class="small-6 columns">
+                {% if subscribed %}
+                <a class="button btn btn-appoint btn-delete" id="btn_subscribe" style="background-color: rgb(158, 158, 158);">
+                    <i class="iconfont">&#xe615;</i>取消预约
+                </a>
+                {% else %}
+                <a class="button btn btn-appoint" id="btn_subscribe">
+                    <i class="iconfont">&#xe613;</i>立即预约
+                </a>
+                {% endif %}
+            </div>
+
+            <div class="small-6 columns">
+                <a class="button btn btn-lesson" href="{% url 'lecture:classroom' %}?id={{lecture.id}}">
+                    <i class="iconfont">&#xe612;</i>进入课堂
+                </a>
+            </div>
+            {% endif %}
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+
+<div class="dialog relay-course-box" id="relay_course_box" style="display:none;">
+  <div class="relay-course">
+    <div class="relay-course-top">
+      <p class="congratulate">恭喜你！</p>
+      <p>成功转播《<span class="relay-course-title">{{lecture.name}}</span>》课程！</p>
+    </div>
+    <div class="relay-course-bottom">
+      <span class="relay-tips"><i class="iconfont">&#xe650;</i>温馨tips</span>
+      <p>转播课程与主课程内容实时同步</p>
+      <span class="relay-tips"><i class="iconfont">&#xe654;</i>转播奖励</span>
+      <p>转播间预约人数50人以上，开始计算收益<br>
+          每10人预约＝1元<br>
+          奖励无上限
+      </p>
+      <span class="relay-tips"><i class="iconfont">&#xe651;</i>奖励领取</span>
+      <p>
+          申请提现将会在课程结束后3个工作日内返款<br>
+        可在"个人中心" - "我要提现"<br>
+        查询和提现奖励
+      </p>
+      <span class="copyright-tip">(最终解释权归荔枝微课所有)</span>
+    </div>
+    <span class="btn-close-relay" id="btn_close_relay">关闭</span>
+  </div>
+</div>
+<!-- 进入课堂下方bar end-->
+{% endblock %}
+
+{% block scripts %}
+{% include 'include/weixinjs.html' %}
+
+<script>
+    $('#btn_subscribe').on('click', function(){
+        var $btn = $(this);
+        if($btn.prop('disabled')){
+            return false;
+        }
+        if(!$btn.hasClass('btn-delete')){
+            {% if not request.account.subscribed %}
+            $(".dialog-qrcode").show();
+            {% else %}
+            post("{% url 'lecture:subscribe' %}", {id: {{lecture.id}}, subscribe: 1}, function (ret) {
+                if(ret.code == 0) {
+                    $btn.html('<i class="iconfont">&#xe615;</i>取消预约');
+                    $btn.addClass('btn-delete');
+                    $btn.css("background-color","#9e9e9e");
+                    {% if not request.account.subscribed %}
+                        $(".dialog-qrcode").show();
+                    {% endif %}
+                }
+                $btn.removeProp('disabled');
+            }, function (err) {
+                $btn.removeProp('disabled');
+            });
+            {% endif %}
+        }else{
+            post("{% url 'lecture:subscribe' %}", {id: {{lecture.id}}, subscribe: 0}, function (ret) {
+                if(ret.code == 0) {
+                    $btn.html('<i class="iconfont">&#xe613;</i>立即预约');
+                    $btn.removeClass('btn-delete');
+                    $btn.css("background-color","#60d0b5");
+                }
+                $btn.removeProp('disabled');
+            }, function (err) {
+                $btn.removeProp('disabled');
+            });
+        }
+        return false;
+    });
+    $('#btn_subscribe').on('click', function(){
+        var $btn = $(this);
+        if($btn.prop('disabled')){
+            return false;
+        }
+        if(!$btn.hasClass('btn-delete')){
+            {% if not request.account.subscribed %}
+            $(".dialog-qrcode").show();
+            {% else %}
+            post("{% url 'lecture:subscribe' %}", {id: {{lecture.id}}, subscribe: 1}, function (ret) {
+                if(ret.code == 0) {
+                    $btn.html('<i class="iconfont">&#xe615;</i>取消预约');
+                    $btn.addClass('btn-delete');
+                    $btn.css("background-color","#9e9e9e");
+                    {% if not request.account.subscribed %}
+                        $(".dialog-qrcode").show();
+                    {% endif %}
+                }
+                $btn.removeProp('disabled');
+            }, function (err) {
+                $btn.removeProp('disabled');
+            });
+            {% endif %}
+        }else{
+            post("{% url 'lecture:subscribe' %}", {id: {{lecture.id}}, subscribe: 0}, function (ret) {
+                if(ret.code == 0) {
+                    $btn.html('<i class="iconfont">&#xe613;</i>立即预约');
+                    $btn.removeClass('btn-delete');
+                    $btn.css("background-color","#60d0b5");
+                }
+                $btn.removeProp('disabled');
+            }, function (err) {
+                $btn.removeProp('disabled');
+            });
+        }
+        return false;
+    });
+
+    $(".btn-qrcode-close").on("click",function(){
+        $(".dialog-qrcode").hide();
+    });
+
+    $('.btn-delete-tutor').on('click', function(){
+        if(!confirm('确定删除?')){
+            return false;
+        }
+        var $row = $(this).closest('.tutor-item');
+        var aid = $row.attr('data-aid');
+        var lecture_id = $row.attr('data-lecture-id');
+        $.getJSON('/lecture/delete_lecturer', {'aid':aid, 'lecture_id': lecture_id}, function(data){
+            if(data.code == 0){
+                $row.prev(".line").remove();
+                $row.remove();
+            }
+        });
+        return false;
+    });
+
+    $(".btn-edit-tutor").click(function() {
+        $(".dialog-edit-tutor").show();
+        lecturerId = $(this).closest(".tutor-item").data("lecturer-id");
+    });
+
+    $(".btn-edit-close").click(function() {
+        $(".dialog-edit-tutor").hide();
+    });
+
+    $(".btn-correct-edit").click(function() {
+        if ($(this).data("sending")) { return false; }
+        var title = trim($("#title-input").val());
+        if (title.length == 0) {
+            alert("输入内容不能为空");
+            return false;
+        }
+        if (title.lenght > 5) {
+            alert("请输入不超过5个字的头衔");
+            return false;
+        }
+        var $this = $(this);
+        $this.data("sending", 1);
+        $this.text("发送中...");
+        post("/lecture/modify_lecturer_title", {"lecture_id": {{lecture.id}}, "lecturer_id": lecturerId, "title": title}, function(data) {
+            $this.data("sending", 0);
+            $this.text("确  定");
+            $("#title-input").val("");
+            if (data.code == 0) {
+                $(".dialog-edit-tutor").hide();
+                $("#lecturer_"+lecturerId).find(".intro-tag").text(title);
+            } else {
+                alert(data.msg);
+                return false;
+            }
+        }); 
+        return false;
+    });
+
+    $('.verify-password').on('click', function(){
+        var password = $('#lecture-password').val();
+        $.getJSON('{% url 'lecture:verify_lecture_password' %}', {lecture_id:{{lecture.id}}, password:password}, function(data){
+            if(data.code == 0){
+                window.location.reload();
+            } else {
+                alert(data.msg);
+            }
+        });
+    });
+
+    function share(){
+        $("#share").css("display", "block");
+    }
+
+    function hide(){
+        $("#share").css("display", "none");
+    }
+
+    wx.ready(function(){
+        wx.onMenuShareTimeline({
+            title: '荔枝微课-{{lecture.account.nickname}}-《{{lecture.name| linebreaksbr}}》',
+            desc: '{{lecture.description | linebreaksbr}}',
+            imgUrl: 'http://{% getsetting 'QINIU_DOMAIN' %}{% static 'share/share.jpg' %}',
+            link: window.location.href,
+            success: function(){
+                _czc.push(["_trackEvent",'person','share','朋友圈']);
+            }
+        });
+     
+        wx.onMenuShareAppMessage({
+            title: '荔枝微课-{{lecture.account.nickname}}-《{{lecture.name| linebreaksbr}}》',
+            desc: '{{lecture.description | linebreaksbr}}',
+            imgUrl: 'http://{% getsetting 'QINIU_DOMAIN' %}{% static 'share/share.jpg' %}',
+            type: 'link',
+            link: window.location.href,
+            success: function(){
+                _czc.push(["_trackEvent",'person','share','发送给好友']);
+            }
+        });
+
+    });
+
+</script>
+
+<script>
+    var dw = $('body').width();
+    var dh = dw / 1.75;
+    $(".lesson-cover").css("height", dh).css("overflow", "hidden");
+    var cover_img = new Image();
+    cover_img.src = $('.lesson-cover-img').attr("src");
+    var cw = cover_img.width;
+    var ch = cover_img.height;
+    var cp = cw / ch;
+    if (cp > 1.75) {
+        $(".lesson-cover-img").css("height", "100%").css("max-width", "none").css("width", "auto").css("margin-left","-25%");
+    }
+</script>
+
+<script>
+
+$('#btn_delete_lecture').on('click', function () {
+  var lecture_id = {{lecture.id}}, action = 'delete';
+  if(confirm('确定删除该课程?')) {
+       $.getJSON('{% url 'lecture:change_lecture_status' %}?lecture_id='+lecture_id+'&action='+action, function(data){
+          if(data.code == 0){
+              window.location.href="{% url 'board:profile' %}?aid={{request.account.id}}";
+          } else {
+            alert(data.msg);
+          }
+      });
+  }
+});
+
+{% if request.account == lecture.account %}
+var key = 'relay-lecture-alerted-'+{{lecture.id}};
+if(localStorage.getItem(key) != 'alerted'){
+  $('.relay-course-box').show();
+  localStorage.setItem(key,'alerted');
+}
+
+$('.btn-close-relay').on('click', function(){
+  $('.relay-course-box').hide();
+});
+{% endif %}
+</script>
+
+{% endblock %}

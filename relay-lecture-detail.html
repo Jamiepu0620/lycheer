@@ -3,6 +3,7 @@
 {% load useful %}
 
 {% block header %}
+<link rel="stylesheer" href="" >
     <link rel="stylesheet" href="{% getsetting 'RESOURCE_URL' %}{% static 'css/lecture-detail.css' %}"/>
     {% if need_password %}
     <style> .wrapper { padding-bottom: 140px; } </style>
@@ -482,7 +483,8 @@
     var cw = cover_img.width;
     var ch = cover_img.height;
     var cp = cw / ch;
-    if (cp > 1.75) {
+    if (cp > 1.75)
+{
         $(".lesson-cover-img").css("height", "100%").css("max-width", "none").css("width", "auto").css("margin-left","-25%");
     }
 </script>

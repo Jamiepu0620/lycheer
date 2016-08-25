@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+		<link rel="stylesheet" type="text/css" href="css/foundation.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/main.css"/>
+        <link rel="stylesheet" type="text/css" href="css/lecture-room.css"/>
+	</head>
+	<body>
+		<div class="wrapper">
+			<!-- 消息条内容 -->
+			<div class="lecture-content-box">
+				<div class="lecture-content" id="lecture_content">
+					<div class="lecture-loading" style="display: none;">
+						<p>正在加载...</p>
+					</div>
+					<div class="lecture-info">
+				        <div class="lecture-count-down" style="">
+					        <p>本次直播于2016-09-10 15:35开始,开课倒计时</p>
+				            <div class="row time-item">
+				                <div class="small-3 columns">
+				                    <strong><span id="countdown-day">19</span>天</strong>
+				                </div>
+				                <div class="small-3 columns">
+				                    <strong><span id="countdown-hour">0</span>时</strong>
+				                </div>
+				                <div class="small-3 columns">
+				                    <strong><span id="countdown-minute">25</span>分</strong>
+				                </div>
+				                <div class="small-3 columns">
+				                    <strong><span id="countdown-second">7</span>秒</strong>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				    <div class="lecture-talk-box">
+			       		<!--语音消息-->
+						<div class="row lecture-talk">
+							<div class="small-2 columns no-padding">
+								<div class="portrait">
+									<img src="http://wx.qlogo.cn/mmopen/KpkzapCxe5aFjuVfWxNoDwFch0FYfLVLdUtU1MDsvb3icYM0HCgVz6nUicMAHJlv2Or2KDH5uBK6iat5OwrFZ908G1eloSWqtcl/132" alt="" class="lecturer-headimg"> 
+								</div>
+								<div class="reward">
+									<p>赏</p>
+								</div>
+							</div>
+							<div class="small-10 columns no-padding">
+								<div class="user-name">
+									<p class="nickname lteacher-name">木小可</p>
+									<p class="identity">导师</p>
+								</div>
+								<div class="talk-cnt">
+									<div class="talk-voice sender-voice" style="width:59.5%;">
+										<img class="talk-icon" src="http://debug.lizhiweike.com/static/img/jingzhi.png" alt="">
+									</div>
+									<div class="voice-tag">
+										<p class="voice-time">59"</p>
+									</div>
+									<!-- 撤销 -->
+									<div class="revoke talk-control">
+										<i class="iconfont">&#xe617;</i>
+									</div>
+									<!-- 回复 -->
+									<div class="reply talk-control">
+										<p>回复</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- 时间 -->
+						<div class="row time-remind"><p>2016-08-24 14:11:27</p></div>
+
+						<!--语音消息-->
+						<div class="row lecture-talk">
+							<div class="small-2 columns no-padding">
+								<div class="portrait">
+									<img src="http://wx.qlogo.cn/mmopen/KpkzapCxe5aFjuVfWxNoDwFch0FYfLVLdUtU1MDsvb3icYM0HCgVz6nUicMAHJlv2Or2KDH5uBK6iat5OwrFZ908G1eloSWqtcl/132" alt="" class="lecturer-headimg"> 
+								</div>
+							</div>
+							<div class="small-10 columns no-padding">
+								<div class="user-name">
+									<p class="nickname lteacher-name">木小可</p>
+								</div>
+								<div class="talk-cnt">
+									<div class="talk-voice sender-voice" style="width:59.5%;">
+										<img class="talk-icon" src="http://debug.lizhiweike.com/static/img/jingzhi.png" alt="">
+									</div>
+									<div class="voice-tag"> <span class="unread"></span>
+										<p class="voice-time">59"</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!--图片消息-->
+						<div class="row lecture-talk">  
+							<div class="small-2 columns no-padding">
+								<div class="portrait">
+									<img src="http://wx.qlogo.cn/mmopen/Hae4qTstzK8RticYrQjlA3q9v6IWKaFoTfzpTkxrmsFsLiaUavzCVfjlUl7FicquLjuadA7e38q9LfqiaXBQBnXK1U9FqMia3Q5vK/132" alt="" class="lecturer-headimg" >
+								</div> 
+								<div class="reward">
+									<p>赏</p>
+								</div>
+							</div>
+							<div class="small-10 columns no-padding">
+								<div class="user-name">
+									<p class="nickname lteacher-name">Terrence</p> <p class="identity">导师</p>
+								</div> 
+								<div class="talk-cnt">
+									<div class="talk-img-wrap">
+										<div class="talk-img">
+											<img src="http://debug.lizhiweike.com/media/picture/35_1470940583_15.jpg"> 
+										</div> 
+									</div> 
+									<!-- 撤销 -->
+									<div class="revoke talk-control">
+										<i class="iconfont">&#xe617;</i>
+									</div>
+								</div> 
+							</div>  
+						</div>
+
+						<!-- 文字消息 -->
+						<div class="row lecture-talk">
+							<div class="small-2 columns no-padding">
+								<div class="portrait"> 
+									<img src="http://wx.qlogo.cn/mmopen/Q3auHgzwzM6ZgBF63oiaYqrxfPX6LfoBEjIJx66U4GiblQxm25KsDNQ85JSnN1cK5wLIljyPwGeQjEGrcX2EDo4Q/132">
+								 </div>
+							</div>
+							<div class="small-10 columns no-padding">
+								<div class="user-name">
+									<p class="nickname student-name">倔强</p>
+									<p class="identity"></p>
+								</div>
+								<div class="talk-cnt">
+									<div class="talk-sentence">
+										<p class="original-text">啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啊</p>
+									</div>
+									<!-- 撤销 -->
+									<div class="revoke talk-control">
+										<i class="iconfont">&#xe617;</i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- 文字消息 -->
+						<div class="row lecture-talk">
+							<div class="small-2 columns no-padding">
+								<div class="portrait"> 
+									<img src="http://wx.qlogo.cn/mmopen/Q3auHgzwzM6ZgBF63oiaYqrxfPX6LfoBEjIJx66U4GiblQxm25KsDNQ85JSnN1cK5wLIljyPwGeQjEGrcX2EDo4Q/132">
+								 </div>
+							</div>
+							<div class="small-10 columns no-padding">
+								<div class="user-name">
+									<p class="nickname student-name">倔强</p>
+									<p class="identity"></p>
+								</div>
+								<div class="talk-cnt">
+									<div class="talk-sentence">
+										<p class="original-text">啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啊</p>
+									</div>
+									<!-- 撤销 -->
+									<div class="revoke talk-control">
+										<i class="iconfont">&#xe617;</i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- 文字消息 -->
+						<div class="row lecture-talk">
+							<div class="small-2 columns no-padding">
+								<div class="portrait"> 
+									<img src="http://wx.qlogo.cn/mmopen/Q3auHgzwzM6ZgBF63oiaYqrxfPX6LfoBEjIJx66U4GiblQxm25KsDNQ85JSnN1cK5wLIljyPwGeQjEGrcX2EDo4Q/132">
+								 </div>
+							</div>
+							<div class="small-10 columns no-padding">
+								<div class="user-name">
+									<p class="nickname student-name">倔强</p>
+									<p class="identity"></p>
+								</div>
+								<div class="talk-cnt">
+									<div class="talk-sentence">
+										<p class="original-text">啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啊</p>
+									</div>
+									<!-- 撤销 -->
+									<div class="revoke talk-control">
+										<i class="iconfont">&#xe617;</i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- 文字消息 -->
+						<div class="row lecture-talk">
+							<div class="small-2 columns no-padding">
+								<div class="portrait"> 
+									<img src="http://wx.qlogo.cn/mmopen/Q3auHgzwzM6ZgBF63oiaYqrxfPX6LfoBEjIJx66U4GiblQxm25KsDNQ85JSnN1cK5wLIljyPwGeQjEGrcX2EDo4Q/132">
+								 </div>
+							</div>
+							<div class="small-10 columns no-padding">
+								<div class="user-name">
+									<p class="nickname student-name">倔强</p>
+									<p class="identity"></p>
+								</div>
+								<div class="talk-cnt">
+									<div class="talk-sentence">
+										<p class="original-text">啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啊</p>
+									</div>
+									<!-- 撤销 -->
+									<div class="revoke talk-control">
+										<i class="iconfont">&#xe617;</i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- 文字消息 -->
+						<div class="row lecture-talk">
+							<div class="small-2 columns no-padding">
+								<div class="portrait"> 
+									<img src="http://wx.qlogo.cn/mmopen/Q3auHgzwzM6ZgBF63oiaYqrxfPX6LfoBEjIJx66U4GiblQxm25KsDNQ85JSnN1cK5wLIljyPwGeQjEGrcX2EDo4Q/132">
+								 </div>
+							</div>
+							<div class="small-10 columns no-padding">
+								<div class="user-name">
+									<p class="nickname student-name">倔强</p>
+									<p class="identity"></p>
+								</div>
+								<div class="talk-cnt">
+									<div class="talk-sentence">
+										<p class="original-text">啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啊</p>
+									</div>
+									<!-- 撤销 -->
+									<div class="revoke talk-control">
+										<i class="iconfont">&#xe617;</i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- 文字消息 -->
+						<div class="row lecture-talk">
+							<div class="small-2 columns no-padding">
+								<div class="portrait"> 
+									<img src="http://wx.qlogo.cn/mmopen/Q3auHgzwzM6ZgBF63oiaYqrxfPX6LfoBEjIJx66U4GiblQxm25KsDNQ85JSnN1cK5wLIljyPwGeQjEGrcX2EDo4Q/132">
+								 </div>
+							</div>
+							<div class="small-10 columns no-padding">
+								<div class="user-name">
+									<p class="nickname student-name">倔强</p>
+									<p class="identity"></p>
+								</div>
+								<div class="talk-cnt">
+									<div class="talk-sentence">
+										<p class="original-text">啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啊</p>
+									</div>
+									<!-- 撤销 -->
+									<div class="revoke talk-control">
+										<i class="iconfont">&#xe617;</i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 右下角评论区 -->
+			<div class="comment-area" id="comment_area">
+				<div class="comment-wrap" id="comment_wrap" style="display:block;">
+					<div class="row primary-comment">
+						<div class="small-9 columns no-padding">
+							<div class="talk-cnt primary-sentence">
+								<p>不错的</p>
+							</div>
+						</div>
+						<div class="small-3 columns no-padding">
+							<div class="portrait">
+								<img src="http://wx.qlogo.cn/mmopen/s9wUlFOWAb3tgz940Ph3AibdialibC4KgzfzeSVZHaXBvY7GqNEAqeranicAmbia0OUz5GWhH2KtEwtXXxicfswGFBnDDTAYibqjAly/132" alt=""> 
+							</div>
+						</div>
+					</div>
+					<div class="row primary-comment">
+						<div class="small-9 columns no-padding">
+							<div class="talk-cnt primary-sentence">
+								<p>不错的</p>
+							</div>
+						</div>
+						<div class="small-3 columns no-padding">
+							<div class="portrait">
+								<img src="http://wx.qlogo.cn/mmopen/s9wUlFOWAb3tgz940Ph3AibdialibC4KgzfzeSVZHaXBvY7GqNEAqeranicAmbia0OUz5GWhH2KtEwtXXxicfswGFBnDDTAYibqjAly/132" alt=""> 
+							</div>
+						</div>
+					</div>
+					<div class="row primary-comment">
+						<div class="small-9 columns no-padding">
+							<div class="talk-cnt primary-sentence">
+								<p>不错的不错的不错的不错的不错的不错的不错的不错的</p>
+							</div>
+						</div>
+						<div class="small-3 columns no-padding">
+							<div class="portrait">
+								<img src="http://wx.qlogo.cn/mmopen/s9wUlFOWAb3tgz940Ph3AibdialibC4KgzfzeSVZHaXBvY7GqNEAqeranicAmbia0OUz5GWhH2KtEwtXXxicfswGFBnDDTAYibqjAly/132" alt=""> 
+							</div>
+						</div>
+					</div>
+					<div class="row primary-comment">
+						<div class="small-9 columns no-padding">
+							<div class="talk-cnt primary-sentence">
+								<p>不错的不错的不错的不错的不错的不错的不错的不错的</p>
+							</div>
+						</div>
+						<div class="small-3 columns no-padding">
+							<div class="portrait">
+								<img src="http://wx.qlogo.cn/mmopen/s9wUlFOWAb3tgz940Ph3AibdialibC4KgzfzeSVZHaXBvY7GqNEAqeranicAmbia0OUz5GWhH2KtEwtXXxicfswGFBnDDTAYibqjAly/132" alt=""> 
+							</div>
+						</div>
+					</div>
+					<div class="row primary-comment">
+						<div class="small-9 columns no-padding">
+							<div class="talk-cnt primary-sentence">
+								<p>不错的不错的不错的不错的不错的不错的不错的不错的</p>
+							</div>
+						</div>
+						<div class="small-3 columns no-padding">
+							<div class="portrait">
+								<img src="http://wx.qlogo.cn/mmopen/s9wUlFOWAb3tgz940Ph3AibdialibC4KgzfzeSVZHaXBvY7GqNEAqeranicAmbia0OUz5GWhH2KtEwtXXxicfswGFBnDDTAYibqjAly/132" alt=""> 
+							</div>
+						</div>
+					</div>
+					<div class="row primary-comment">
+						<div class="small-9 columns no-padding">
+							<div class="talk-cnt primary-sentence">
+								<p>不错的不错的不错的不错的不错的不错的不错的不错的</p>
+							</div>
+						</div>
+						<div class="small-3 columns no-padding">
+							<div class="portrait">
+								<img src="http://wx.qlogo.cn/mmopen/s9wUlFOWAb3tgz940Ph3AibdialibC4KgzfzeSVZHaXBvY7GqNEAqeranicAmbia0OUz5GWhH2KtEwtXXxicfswGFBnDDTAYibqjAly/132" alt=""> 
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				<div class="comment-switch">
+					<div class="switch-on">
+						<a id="switch_on">关</a>
+					</div>
+					<div class="comment-show" id="comment_show" style="display: block;">
+						<div class="comment-edit">
+							<a id="btn_comment_edit" href="javascript:;">
+								<i class="iconfont">&#xe60b;</i>
+							</a>
+						</div>
+						<div class="comment-num">
+							<p><span id="listen_number"> 1 </span>人气</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 底部控件 -->
+			<div class="operation">
+
+				<!-- 几秒后将自动发送语音提示 -->
+				<div class="count-down" id="count_down" style="display: none;">
+					<p>1秒后，语音将会自动发送，注意停顿</p>
+				</div>
+
+				<!-- 正在回复的弹窗 -->
+				<div class="reply-bar clearfix" id="reply_bar" style="display: none;">
+				    <div class="row">
+				        <div class="small-8 columns">
+				            <p class="reply-bar-obj">正在回复:倔强</p>
+				        </div>
+				        <div class="small-4 columns">
+				            <a href="javascript:;" id="cancel_reply"><p><i class="iconfont">&#xe61a;</i>取消回复</p></a>
+				        </div>
+				    </div>
+				    <p class="reply-bar-dec">啦啦啦啦</p>
+				</div>
+
+				<!-- 操作按钮 -->
+			    <div class="row operation-control">
+			        <div class="small-3 columns no-padding"><a class="button btn" id="btn_record" href="#"><i class="iconfont">&#xe607;</i>语音</a></div>
+			        <div class="small-3 columns no-padding"><a class="button btn" id="btn_show_text" href="#"><i class="iconfont">&#xe605;</i>文字</a></div>
+			        <div class="small-3 columns no-padding"><a class="button btn" id="btn_display_ppts" href="#"><i class="iconfont">&#xe611;</i>课件</a></div>
+			        <div class="small-3 columns no-padding"><a class="button btn" id="btn_setting" href="#"><i class="iconfont">&#xe601;</i>设置</a></div>
+			    </div>
+			    <div class="operation-box">
+			    	<!--语音发送控件-->
+			    	<div class="record-wrap" id="record_control_box" style="display: none;">
+				        <div class="record-notice">
+				            <p class="record-tips">点击下面图标开始录音</p>
+				        </div>
+				        <div class="record-control-container">
+				            <div class="record-control" id="record_control">
+				                <div class="send-microphone microphone-icon">
+				                    <img class="icon-mic" src="img/icon-mic.png"/>
+				                </div>
+				            </div>
+				            <div class="record-control-pulse"></div>
+				        </div>
+				    </div>
+				    
+				    <!--文字发送控件-->
+			    	<div class="row word-wrap" id="word_control_box" style="display: none;">
+				        <div action="" method="post">
+					        <div class="small-9 columns no-padding">
+					            <label>
+					                <input type="text" placeholder="输入文字内容，1000字内">
+					            </label>
+					        </div>
+					        <div class="small-3 columns no-padding">
+					            <a class="button btn btn-send" href="javascript:;">发送</a>
+					        </div>
+				        </div>
+				    </div>
+
+				    <!-- 设置 -->
+				    <div class="setting-area" id="setting_area_box" style="display:none">
+				    	<div class="row">
+				    		<div class="small-3 columns no-padding">
+				    			<input type="checkbox" id="btn_open_comment">
+				    			<label for="btn_open_comment">
+				    				<span class="setting-border"><i class="iconfont">&#xe658;</i></span>
+				    			    <p class="setting-tip-word">用户评论</p>
+				    			</label>
+				    		</div>
+				    		<div class="small-3 columns no-padding">
+				    			<input type="checkbox" id="btn_open_to_wall">
+				    			<label for="btn_open_to_wall">
+				    				<span class="setting-border"><i class="iconfont">&#xe658;</i></span>
+				    			    <p class="setting-tip-word">自动上墙</p>
+				    			</label>
+				    		</div>
+				    		<div class="small-3 columns no-padding">
+				    			<input type="checkbox" id="btn_open_reward_message">
+				    			<label for="btn_open_reward_message">
+				    				<span class="setting-border"><i class="iconfont">&#xe658;</i></span>
+				    				<p class="setting-tip-word">打赏消息</p>
+				    			</label>
+				    		</div>
+				    		<div class="small-3 columns no-padding">
+				    			<input type="checkbox" id="btn_end-lecture">
+				    			<label for="btn_end-lecture">
+				    				<span class="setting-border"><i class="iconfont">&#xe658;</i></span>
+				    				<p class="setting-tip-word">结束课程</p>
+				    			</label>
+				    			
+				    		</div>
+				    	</div>
+				    </div>
+
+			    </div>
+			</div>
+
+			<!-- 上传ppt -->
+			<div class="dialog ppt-area" id="ppt_area" style="display:none;">
+				<div class="ppt-bg">
+					<div class="row send-or-not">
+						<div class="small-12 columns not-send">
+							<a href="javascript:;" id="btn_hide_ppts" class="close-dialog">关闭</a>
+						</div>
+					</div>
+					<div class="ppt-img-list">
+						<!-- ppt展示 -->
+						<div class="row ppt-img-item">
+							<div class="small-6 columns">
+								<div class="ppt-img">
+									<img src="http://debug.lizhiweike.com/media/ppt/5_36ceb3d95a4927bc39bb039e9aa30445.jpg">
+								</div>
+								<div class="row ppt-img-operate">
+									<div class="small-3 columns no-padding">
+										<a class="btn btn-up-down" href="javascript:;"><i class="iconfont">&#xe62b;</i></a>
+									</div>
+									<div class="small-3 columns no-padding">
+										<a class="btn btn-up-down" href="javascript:;"><i class="iconfont">&#xe62c;</i></a>
+									</div>
+									<div class="small-3 columns no-padding">
+										<a class="btn btn-ppt-play" href="javascript:;"><i class="iconfont">&#xe62d;</i></a>
+									</div>
+									<div class="small-3 columns no-padding">
+										<a class="btn btn-ppt-delete" href="javascript:;"><i class="iconfont">&#xe62e;</i></a>
+									</div>
+								</div>
+							</div>
+							<div class="small-6 columns">
+								<div class="ppt-img">
+									<img src="http://debug.lizhiweike.com/media/ppt/5_36ceb3d95a4927bc39bb039e9aa30445.jpg">
+								</div>
+								<div class="row ppt-img-operate">
+									<div class="small-3 columns no-padding">
+										<a class="btn btn-up-down" href="javascript:;"><i class="iconfont">&#xe62b;</i></a>
+									</div>
+									<div class="small-3 columns no-padding">
+										<a class="btn btn-up-down" href="javascript:;"><i class="iconfont">&#xe62c;</i></a>
+									</div> 
+									<div class="small-3 columns no-padding">
+										<a class="btn btn-ppt-play" href="javascript:;"><i class="iconfont">&#xe62d;</i></a>
+									</div>
+									<div class="small-3 columns no-padding">
+										<a class="btn btn-ppt-delete" href="javascript:;"><i class="iconfont">&#xe62e;</i></a>
+									</div>
+								</div>
+							</div>
+							<div class="small-6 columns">
+								<div class="ppt-img">
+									<img src="http://debug.lizhiweike.com/media/ppt/5_36ceb3d95a4927bc39bb039e9aa30445.jpg">
+								</div>
+								<div class="row ppt-img-operate">
+									<div class="small-3 columns no-padding">
+										<a class="btn btn-up-down" href="javascript:;"><i class="iconfont">&#xe62b;</i></a>
+									</div>
+									<div class="small-3 columns no-padding">
+										<a class="btn btn-up-down" href="javascript:;"><i class="iconfont">&#xe62c;</i></a>
+									</div>
+									<div class="small-3 columns no-padding">
+										<a class="btn btn-ppt-play" href="javascript:;"><i class="iconfont">&#xe62d;</i></a>
+									</div>
+									<div class="small-3 columns no-padding">
+										<a class="btn btn-ppt-delete" href="javascript:;"><i class="iconfont">&#xe62e;</i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="row ppt-add-wrap">
+						<div class="small-12 columns">
+							<a href="javascript:;" class="ppt-add">
+								<p>+ 上传新的PPT图片</p>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 左上角回到主页的按钮 -->
+			<div class="float-widget direct-seeding">
+				<a href="javascript:;" class="btn-direct-seeding"><i class="iconfont">&#xe619;</i></a>
+			</div>
+
+			<!-- 右上角的ppt操作 -->
+			<div class="ppt-operate">
+			    <a class="float-widget btn-show-ppt" id="btn_show_ppt" href="javascript:;">PPT</a>
+			    <div class="ppt-operate-img" id="ppt_img" style="display: none;">
+			        <img src="http://debug.lizhiweike.com/media/ppt/5_36ceb3d95a4927bc39bb039e9aa30445.jpg">
+			        <p>点击语音或者文字可以看到对应的PPT</p>
+			        <div class="row ppt-operate-page">
+			            <div class="small-6 columns">
+			                <a id="pre_ppt" class="btn-ppt-page" href="javascript:;">
+			                    <p class="btn-ppt-forward"><i class="iconfont">&#xe636;</i></p>
+			                </a>
+			            </div>
+			            <div class="small-6 columns">
+			                <a id="next_ppt" class="btn-ppt-page btn-ppt-next" href="javascript:;">
+			                    <p class="btn-ppt-next"><i class="iconfont">&#xe637;</i></p>
+			                </a>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+
+			<!-- 右上角的刷新操作 -->
+			<div class="float-widget reload">
+			    <a href="javascript:;" class="btn-reload"><i class="iconfont">&#xe61c;</i></a>
+			</div>
+			<!-- 右上角的置顶操作 -->
+			<div class="float-widget toTop">
+			    <a href="javascript:;" class="btn-toTop"><i class="iconfont">&#xe61d;</i></a>
+			</div>
+
+			<!-- 右上角的置底操作 -->
+			<div class="float-widget toBottom">
+			    <a href="javascript:;" class="btn-toBottom"><i class="iconfont">&#xe61e;</i></a>
+			</div>
+
+			<!-- 发评论 -->
+			<div class="dialog comment-bg" id="comment_page" style="display: none;">
+				<div class="btn to-lecture-box">
+					<a class="btn-to-lecture close-dialog" href="javascript:;">回到课堂</a>
+				</div>
+				<div class="comment-list-box">
+					<div class="comment-list">
+						<!-- 评论列表 -->
+						<div class="row comment-item">
+							<div class="small-2 columns no-padding headimg-wrapper">
+								<div class="portrait"> 
+									<img src="http://wx.qlogo.cn/mmopen/Q3auHgzwzM6ZgBF63oiaYqrxfPX6LfoBEjIJx66U4GiblQxm25KsDNQ85JSnN1cK5wLIljyPwGeQjEGrcX2EDo4Q/132" alt=""> 
+								</div>
+							</div>
+							<div class="small-7 columns no-padding">
+								<div class="user-name">
+									<p>倔强</p>
+									<a class="comment-delete" href="javascript:;">删除</a>
+									<a class="comment-block" href="javascript:;">禁言</a>
+								</div>
+								<div class="comment-dec">
+									<p>啦啦啦啦</p>
+								</div>
+							</div>
+							<div class="small-3 columns no-padding">
+								<a class="button btn btn-to-wall comment-published" href="javascript:;">已上墙</a>
+							</div>
+						</div>
+						<div class="row comment-item">
+							<div class="small-2 columns no-padding headimg-wrapper">
+								<div class="portrait"> 
+									<img src="http://wx.qlogo.cn/mmopen/Q3auHgzwzM6ZgBF63oiaYqrxfPX6LfoBEjIJx66U4GiblQxm25KsDNQ85JSnN1cK5wLIljyPwGeQjEGrcX2EDo4Q/132" alt=""> 
+								</div>
+							</div>
+							<div class="small-7 columns no-padding">
+								<div class="user-name">
+									<p>倔强</p>
+									<a class="comment-delete" href="javascript:;">删除</a>
+									<a class="comment-block" href="javascript:;">禁言</a>
+								</div>
+								<div class="comment-dec">
+									<p>啦啦啦啦</p>
+								</div>
+							</div>
+							<div class="small-3 columns no-padding">
+								<a class="button btn btn-to-wall comment-published" href="javascript:;">已上墙</a>
+							</div>
+						</div>
+						<div class="row comment-item">
+							<div class="small-2 columns no-padding headimg-wrapper">
+								<div class="portrait"> 
+									<img src="http://wx.qlogo.cn/mmopen/Q3auHgzwzM6ZgBF63oiaYqrxfPX6LfoBEjIJx66U4GiblQxm25KsDNQ85JSnN1cK5wLIljyPwGeQjEGrcX2EDo4Q/132" alt=""> 
+								</div>
+							</div>
+							<div class="small-7 columns no-padding">
+								<div class="user-name">
+									<p>倔强</p>
+									<a class="comment-delete" href="javascript:;">删除</a>
+									<a class="comment-block" href="javascript:;">禁言</a>
+								</div>
+								<div class="comment-dec">
+									<p>啦啦啦啦</p>
+								</div>
+							</div>
+							<div class="small-3 columns no-padding">
+								<a class="button btn btn-to-wall comment-published" href="javascript:;">已上墙</a>
+							</div>
+						</div>
+						<div class="row comment-item">
+							<div class="small-2 columns no-padding headimg-wrapper">
+								<div class="portrait"> 
+									<img src="http://wx.qlogo.cn/mmopen/Q3auHgzwzM6ZgBF63oiaYqrxfPX6LfoBEjIJx66U4GiblQxm25KsDNQ85JSnN1cK5wLIljyPwGeQjEGrcX2EDo4Q/132" alt=""> 
+								</div>
+							</div>
+							<div class="small-7 columns no-padding">
+								<div class="user-name">
+									<p>倔强</p>
+									<a class="comment-delete" href="javascript:;">删除</a>
+									<a class="comment-block" href="javascript:;">禁言</a>
+								</div>
+								<div class="comment-dec">
+									<p>啦啦啦啦</p>
+								</div>
+							</div>
+							<div class="small-3 columns no-padding">
+								<a class="button btn btn-to-wall comment-published" href="javascript:;">已上墙</a>
+							</div>
+						</div>
+						<div class="row comment-item">
+							<div class="small-2 columns no-padding headimg-wrapper">
+								<div class="portrait"> 
+									<img src="http://wx.qlogo.cn/mmopen/Q3auHgzwzM6ZgBF63oiaYqrxfPX6LfoBEjIJx66U4GiblQxm25KsDNQ85JSnN1cK5wLIljyPwGeQjEGrcX2EDo4Q/132" alt=""> 
+								</div>
+							</div>
+							<div class="small-7 columns no-padding">
+								<div class="user-name">
+									<p>倔强</p>
+									<a class="comment-delete" href="javascript:;">删除</a>
+									<a class="comment-block" href="javascript:;">禁言</a>
+								</div>
+								<div class="comment-dec">
+									<p>啦啦啦啦</p>
+								</div>
+							</div>
+							<div class="small-3 columns no-padding">
+								<a class="button btn btn-to-wall comment-published" href="javascript:;">已上墙</a>
+							</div>
+						</div>
+						<div class="row comment-item">
+							<div class="small-2 columns no-padding headimg-wrapper">
+								<div class="portrait"> 
+									<img src="http://wx.qlogo.cn/mmopen/Q3auHgzwzM6ZgBF63oiaYqrxfPX6LfoBEjIJx66U4GiblQxm25KsDNQ85JSnN1cK5wLIljyPwGeQjEGrcX2EDo4Q/132" alt=""> 
+								</div>
+							</div>
+							<div class="small-7 columns no-padding">
+								<div class="user-name">
+									<p>倔强</p>
+									<a class="comment-delete" href="javascript:;">删除</a>
+									<a class="comment-block" href="javascript:;">禁言</a>
+								</div>
+								<div class="comment-dec">
+									<p>啦啦啦啦</p>
+								</div>
+							</div>
+							<div class="small-3 columns no-padding">
+								<a class="button btn btn-to-wall comment-published" href="javascript:;">已上墙</a>
+							</div>
+						</div>
+						<div class="row comment-item">
+							<div class="small-2 columns no-padding headimg-wrapper">
+								<div class="portrait"> 
+									<img src="http://wx.qlogo.cn/mmopen/Q3auHgzwzM6ZgBF63oiaYqrxfPX6LfoBEjIJx66U4GiblQxm25KsDNQ85JSnN1cK5wLIljyPwGeQjEGrcX2EDo4Q/132" alt=""> 
+								</div>
+							</div>
+							<div class="small-7 columns no-padding">
+								<div class="user-name">
+									<p>倔强</p>
+									<a class="comment-delete" href="javascript:;">删除</a>
+									<a class="comment-block" href="javascript:;">禁言</a>
+								</div>
+								<div class="comment-dec">
+									<p>啦啦啦啦</p>
+								</div>
+							</div>
+							<div class="small-3 columns no-padding">
+								<a class="button btn btn-to-wall comment-published" href="javascript:;">已上墙</a>
+							</div>
+						</div>
+						<div class="row comment-item">
+							<div class="small-2 columns no-padding headimg-wrapper">
+								<div class="portrait"> 
+									<img src="http://wx.qlogo.cn/mmopen/Q3auHgzwzM6ZgBF63oiaYqrxfPX6LfoBEjIJx66U4GiblQxm25KsDNQ85JSnN1cK5wLIljyPwGeQjEGrcX2EDo4Q/132" alt=""> 
+								</div>
+							</div>
+							<div class="small-7 columns no-padding">
+								<div class="user-name">
+									<p>倔强</p>
+									<a class="comment-delete" href="javascript:;">删除</a>
+									<a class="comment-block" href="javascript:;">禁言</a>
+								</div>
+								<div class="comment-dec">
+									<p>啦啦啦啦</p>
+								</div>
+							</div>
+							<div class="small-3 columns no-padding">
+								<a class="button btn btn-to-wall comment-published" href="javascript:;">已上墙</a>
+							</div>
+						</div>
+						<div class="row comment-item">
+							<div class="small-2 columns no-padding headimg-wrapper">
+								<div class="portrait"> 
+									<img src="http://wx.qlogo.cn/mmopen/Q3auHgzwzM6ZgBF63oiaYqrxfPX6LfoBEjIJx66U4GiblQxm25KsDNQ85JSnN1cK5wLIljyPwGeQjEGrcX2EDo4Q/132" alt=""> 
+								</div>
+							</div>
+							<div class="small-7 columns no-padding">
+								<div class="user-name">
+									<p>倔强</p>
+									<a class="comment-delete" href="javascript:;">删除</a>
+									<a class="comment-block" href="javascript:;">禁言</a>
+								</div>
+								<div class="comment-dec">
+									<p>啦啦啦啦</p>
+								</div>
+							</div>
+							<div class="small-3 columns no-padding">
+								<a class="button btn btn-to-wall comment-published" href="javascript:;">已上墙</a>
+							</div>
+						</div>
+						<div class="row comment-item">
+							<div class="small-2 columns no-padding headimg-wrapper">
+								<div class="portrait"> 
+									<img src="http://wx.qlogo.cn/mmopen/Q3auHgzwzM6ZgBF63oiaYqrxfPX6LfoBEjIJx66U4GiblQxm25KsDNQ85JSnN1cK5wLIljyPwGeQjEGrcX2EDo4Q/132" alt=""> 
+								</div>
+							</div>
+							<div class="small-7 columns no-padding">
+								<div class="user-name">
+									<p>倔强</p>
+									<a class="comment-delete" href="javascript:;">删除</a>
+									<a class="comment-block" href="javascript:;">禁言</a>
+								</div>
+								<div class="comment-dec">
+									<p>啦啦啦啦</p>
+								</div>
+							</div>
+							<div class="small-3 columns no-padding">
+								<a class="button btn btn-to-wall comment-published" href="javascript:;">已上墙</a>
+							</div>
+						</div>
+						<div class="row comment-item">
+							<div class="small-2 columns no-padding headimg-wrapper">
+								<div class="portrait"> 
+									<img src="http://wx.qlogo.cn/mmopen/Q3auHgzwzM6ZgBF63oiaYqrxfPX6LfoBEjIJx66U4GiblQxm25KsDNQ85JSnN1cK5wLIljyPwGeQjEGrcX2EDo4Q/132" alt=""> 
+								</div>
+							</div>
+							<div class="small-7 columns no-padding">
+								<div class="user-name">
+									<p>倔强</p>
+									<a class="comment-delete" href="javascript:;">删除</a>
+									<a class="comment-block" href="javascript:;">禁言</a>
+								</div>
+								<div class="comment-dec">
+									<p>啦啦啦啦</p>
+								</div>
+							</div>
+							<div class="small-3 columns no-padding">
+								<a class="button btn btn-to-wall comment-published" href="javascript:;">已上墙</a>
+							</div>
+						</div>
+						<div class="row">
+							<div class="small-12 columns">
+								<a class="btn btn-load-more" href="javascript:;">已经没有了</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="publish-comment">
+					<div class="row">
+						<div class="small-9 columns">
+							<label>
+			                    <input type="text" id="discuss_input" maxlength="50" placeholder="提问或者发表你的看法">
+			                </label>
+						</div>
+						<div class="small-3 columns">
+							<a id="discuss_send" class="button btn" href="javascript:;">发送</a>
+						</div>
+					</div>
+					<div class="row" class="comment-block-tip" style="display:none;">
+						<p>您已被禁言</p>
+					</div>
+					<div class="row" class="coment-close-tip" style="display:none;">
+						<p>已禁止评论</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- 正在录音弹窗 -->
+			<div class="dialog-recording" id="dialog_recording"  style="display:none;">
+			    <span class="text">正在录音...</span><br>
+			    <span class="tips"></span>
+			</div>
+
+			<!-- 结束课程提醒弹窗 -->
+			<div class="dialog dialog-qrcode" id="close_tip_dialog" style="display: none;">
+			    <div class="dialog-center qrcode-bg">
+			        <a href="javascript:;" class="btn-close-qrcode close-dialog"><i class="iconfont">&#xe618;</i></a>
+			        <img class="qrcode-img-tip" src="http://debug.lizhiweike.com/static/img/qrcode-header2.png" alt="">
+			        <div class="lecture-end-cnt">
+			            <p class="lecture-end-tip">当前课程已结束</p>
+			            <div class="qrcode-box">
+			            	<img src="img/qrcode2.jpg"/>
+			            </div>
+			            <a href="javascript:;" class="btn btn-to-start"><p>从第一条开始听</p></a>
+			        </div>
+			    </div>
+			</div>
+
+			<!-- 预约课程弹窗 -->
+			<div class="dialog dialog-lecture-not-start" style="display: none;">
+			    <div class="dialog-center qrcode-bg">
+			        <img class="qrcode-img-tip" src="img/qrcode-header.png" alt="">
+			        <div class="qrcode-cnt">
+			            <p>长按二维码预约课程</p>
+			            <div class="qrcode-box">
+			            	<img src="img/qrcode2.jpg"/>
+			            </div>
+			            <a href="javascript:;" class="close-dialog btn-close-follow"><p>关闭</p></a>
+			        </div>
+			    </div>
+			</div>
+
+			<!-- 断网提醒弹窗 -->
+			<div class="dialog dialog-loading-wrap" id="dialog_reload" style="display: none;">
+			    <div class="dialog-center dialog-loading">
+			        <div class="dialog-box dialog-reload">
+			            <a href="javascript:;" class="close-dialog btn-close-dialog"><i class="iconfont">&#xe618;</i></a>
+			            <i class="iconfont reload-tip">&#xe61c;</i>
+			            <p id="dialog_reload_text">网络卡了 :( 点击刷新</p>
+			            <a class="btn btn-network-reload" href="javascript:;"><p>立即刷新</p></a>
+			        </div>
+			    </div>
+			</div>
+
+			<!-- 对方正在输入 -->
+			<div class="float-widget the-other-stats" style="display: none;">
+			    <p id="input-status">对方正在输入...</p>
+			</div>
+
+			<!-- 正在加载 -->
+			<div class="dialog dialog-loading-wrap" style="display: none;">
+			    <div class="dialog-center dialog-loading">
+		            <img src="http://debug.lizhiweike.com/static/img/loading.gif" alt="">
+		            <p>正在加载...</p>
+			    </div>
+			</div>
+
+			<!-- 打赏弹窗 -->
+			<div class="dialog reward-area" id="reward_area" style="display: none;">
+			    <div class="dialog-center reward-bg">
+			        <div class="close-dialog btn-close-dialog">
+			            <i class="iconfont">&#xe618;</i>
+			        </div>
+			        <img src="http://debug.lizhiweike.com/static/img/reward2.png" alt="">
+
+			        <div class="btn-reward-show">
+			            <div>
+			                <div class="row reward-money">
+			                      <div class="small-4 columns">
+			                          <input type="radio" name="reward-money" value="1" id="1yuan">
+			                          <label for="1yuan" class="reward-select" data-fee="1">1元</label>
+			                      </div>
+			                  
+			                      <div class="small-4 columns">
+			                          <input type="radio" name="reward-money" value="2" id="2yuan">
+			                          <label for="2yuan" class="reward-select" data-fee="2">2元</label>
+			                      </div>
+			                  
+			                      <div class="small-4 columns">
+			                          <input type="radio" name="reward-money" value="10" id="10yuan">
+			                          <label for="10yuan" class="reward-select" data-fee="10">10元</label>
+			                      </div>
+			                  
+			                      <div class="small-4 columns">
+			                          <input type="radio" name="reward-money" value="20" id="20yuan">
+			                          <label for="20yuan" class="reward-select" data-fee="20">20元</label>
+			                      </div>
+			                  
+			                      <div class="small-4 columns">
+			                          <input type="radio" name="reward-money" value="50" id="50yuan">
+			                          <label for="50yuan" class="reward-select" data-fee="50">50元</label>
+			                      </div>
+			                  
+			                      <div class="small-4 columns">
+			                          <input type="radio" name="reward-money" value="100" id="100yuan">
+			                          <label for="100yuan" class="reward-select" data-fee="100">100元</label>
+			                      </div>
+			                </div>
+			            </div>
+			        </div>
+			        <div class="reward-object">
+			            <div class="portrait">
+			                <img id="reward-headimg" src="http://wx.qlogo.cn/mmopen/Q3auHgzwzM6ZgBF63oiaYqrxfPX6LfoBEjIJx66U4GiblQxm25KsDNQ85JSnN1cK5wLIljyPwGeQjEGrcX2EDo4Q/132" alt="">
+			            </div>
+			            <p id="reward-nickname">倔强</p>
+			        </div>
+	
+			    </div>
+			</div>
+
+			
+		</div>
+	</body>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/lecture-room.js"></script>
+</html>

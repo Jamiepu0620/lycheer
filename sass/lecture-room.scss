@@ -57,7 +57,6 @@
 p.identity {
     color: $p-color;
     font-size: 0.75rem;
-    padding: 0 6px;
 }
 .talk-voice {
      display: inline-block;
@@ -532,7 +531,7 @@ p.identity {
 }
 .comment-wrap{
     margin-bottom:34px;
-    height: 300px;
+    height: 268px;
     overflow-y:scroll;
 }
 .primary-sentence{
@@ -540,7 +539,6 @@ p.identity {
     border-radius: 4px;
     padding: 2px 4px;
     display: inline-block;
-    margin-top: 4px;
     p{
         color: #fff;
         text-align:left;

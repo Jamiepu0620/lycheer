@@ -3,12 +3,25 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+		<title>直播间</title>
 		<link rel="stylesheet" type="text/css" href="css/foundation.min.css"/>
         <link rel="stylesheet" type="text/css" href="css/main.css"/>
         <link rel="stylesheet" type="text/css" href="css/lecture-room.css"/>
 	</head>
 	<body>
-		<div class="wrapper">
+		<!-- 预加载页面 -->
+		<div class="pre-load" style="display:none">
+		    <img src="img/preload-logo.png" alt=""/>
+		    <div class="sk-wave">
+		        <div class="sk-rect sk-rect1"></div>
+		        <div class="sk-rect sk-rect2"></div>
+		        <div class="sk-rect sk-rect3"></div>
+		        <div class="sk-rect sk-rect4"></div>
+		        <div class="sk-rect sk-rect5"></div>
+		    </div>
+		</div>
+
+		<div class="wrapper lecture-wrapper" style="display:block">
 			<!-- 消息条内容 -->
 			<div class="lecture-content-box">
 				<div class="lecture-content" id="lecture_content">
@@ -61,10 +74,6 @@
 									<div class="revoke talk-control">
 										<i class="iconfont">&#xe617;</i>
 									</div>
-									<!-- 回复 -->
-									<div class="reply talk-control">
-										<p>回复</p>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -81,7 +90,7 @@
 							</div>
 							<div class="small-10 columns no-padding">
 								<div class="user-name">
-									<p class="nickname lteacher-name">木小可</p>
+									<p class="nickname">木小可</p>
 								</div>
 								<div class="talk-cnt">
 									<div class="talk-voice sender-voice" style="width:59.5%;">
@@ -89,6 +98,53 @@
 									</div>
 									<div class="voice-tag"> <span class="unread"></span>
 										<p class="voice-time">59"</p>
+									</div>
+									<!-- 回复 -->
+									<div class="reply talk-control">
+										<p>回复</p>
+									</div>
+
+									<!-- 语音正在发送 -->
+									<div class="voice-sending talk-control" style="display:none">
+										<img src="img/loading.gif">
+									</div>
+									<!-- 语音发送失败 -->
+									<div class="resend-prompt talk-control" style="display:none">
+					                    <div class="send-failed">
+					                      <span>!</span>
+					                    </div>
+					                    <div class="send-failed-dec">
+					                      <p>点击重发</p>
+					                    </div>
+					                </div>
+								</div>
+							</div>
+						</div>
+
+						<!--语音消息-->
+						<div class="row lecture-talk">
+							<div class="small-2 columns no-padding">
+								<div class="portrait">
+									<img src="http://wx.qlogo.cn/mmopen/KpkzapCxe5aFjuVfWxNoDwFch0FYfLVLdUtU1MDsvb3icYM0HCgVz6nUicMAHJlv2Or2KDH5uBK6iat5OwrFZ908G1eloSWqtcl/132" alt="" class="lecturer-headimg"> 
+								</div>
+							</div>
+							<div class="small-10 columns no-padding">
+								<div class="user-name">
+									<p class="nickname">木小可</p>
+								</div>
+								<div class="talk-cnt">
+									<div class="talk-sentence" style="width:59.5%;">
+										<p id="log_text" class="original-text">啦啦啦</p>
+										<div class="talk-voice sender-voice" style="width:100%;">
+											<img class="talk-icon" src="http://debug.lizhiweike.com/static/img/jingzhi.png" alt="">
+										</div>
+										<div class="voice-tag">
+											<p class="voice-time">30"</p>
+										</div>
+									</div>
+									<!-- 撤销 -->
+									<div class="revoke talk-control">
+										<i class="iconfont">&#xe617;</i>
 									</div>
 								</div>
 							</div>
@@ -358,102 +414,123 @@
 				</div>
 			</div>
 
+
 			<!-- 底部控件 -->
 			<div class="operation">
 
-				<!-- 几秒后将自动发送语音提示 -->
-				<div class="count-down" id="count_down" style="display: none;">
-					<p>1秒后，语音将会自动发送，注意停顿</p>
-				</div>
+				<!-- 讲师底部按钮 -->
+				<div class="tutor-operation" style="display:block">
+					<!-- 几秒后将自动发送语音提示 -->
+					<div class="count-down" id="count_down" style="display: none;">
+						<p>1秒后，语音将会自动发送，注意停顿</p>
+					</div>
 
-				<!-- 正在回复的弹窗 -->
-				<div class="reply-bar clearfix" id="reply_bar" style="display: none;">
-				    <div class="row">
-				        <div class="small-8 columns">
-				            <p class="reply-bar-obj">正在回复:倔强</p>
-				        </div>
-				        <div class="small-4 columns">
-				            <a href="javascript:;" id="cancel_reply"><p><i class="iconfont">&#xe61a;</i>取消回复</p></a>
-				        </div>
-				    </div>
-				    <p class="reply-bar-dec">啦啦啦啦</p>
-				</div>
-
-				<!-- 操作按钮 -->
-			    <div class="row operation-control">
-			        <div class="small-3 columns no-padding"><a class="button btn" id="btn_record" href="#"><i class="iconfont">&#xe607;</i>语音</a></div>
-			        <div class="small-3 columns no-padding"><a class="button btn" id="btn_show_text" href="#"><i class="iconfont">&#xe605;</i>文字</a></div>
-			        <div class="small-3 columns no-padding"><a class="button btn" id="btn_display_ppts" href="#"><i class="iconfont">&#xe611;</i>课件</a></div>
-			        <div class="small-3 columns no-padding"><a class="button btn" id="btn_setting" href="#"><i class="iconfont">&#xe601;</i>设置</a></div>
-			    </div>
-			    <div class="operation-box">
-			    	<!--语音发送控件-->
-			    	<div class="record-wrap" id="record_control_box" style="display: none;">
-				        <div class="record-notice">
-				            <p class="record-tips">点击下面图标开始录音</p>
-				        </div>
-				        <div class="record-control-container">
-				            <div class="record-control" id="record_control">
-				                <div class="send-microphone microphone-icon">
-				                    <img class="icon-mic" src="img/icon-mic.png"/>
-				                </div>
-				            </div>
-				            <div class="record-control-pulse"></div>
-				        </div>
-				    </div>
-				    
-				    <!--文字发送控件-->
-			    	<div class="row word-wrap" id="word_control_box" style="display: none;">
-				        <div action="" method="post">
-					        <div class="small-9 columns no-padding">
-					            <label>
-					                <input type="text" placeholder="输入文字内容，1000字内">
-					            </label>
+					<!-- 正在回复的弹窗 -->
+					<div class="reply-bar clearfix" id="reply_bar" style="display: none;">
+					    <div class="row">
+					        <div class="small-8 columns">
+					            <p class="reply-bar-obj">正在回复:倔强</p>
 					        </div>
-					        <div class="small-3 columns no-padding">
-					            <a class="button btn btn-send" href="javascript:;">发送</a>
+					        <div class="small-4 columns">
+					            <a href="javascript:;" id="cancel_reply"><p><i class="iconfont">&#xe61a;</i>取消回复</p></a>
 					        </div>
-				        </div>
-				    </div>
+					    </div>
+					    <p class="reply-bar-dec">啦啦啦啦</p>
+					</div>
 
-				    <!-- 设置 -->
-				    <div class="setting-area" id="setting_area_box" style="display:none">
-				    	<div class="row">
-				    		<div class="small-3 columns no-padding">
-				    			<input type="checkbox" id="btn_open_comment">
-				    			<label for="btn_open_comment">
-				    				<span class="setting-border"><i class="iconfont">&#xe658;</i></span>
-				    			    <p class="setting-tip-word">用户评论</p>
-				    			</label>
-				    		</div>
-				    		<div class="small-3 columns no-padding">
-				    			<input type="checkbox" id="btn_open_to_wall">
-				    			<label for="btn_open_to_wall">
-				    				<span class="setting-border"><i class="iconfont">&#xe658;</i></span>
-				    			    <p class="setting-tip-word">自动上墙</p>
-				    			</label>
-				    		</div>
-				    		<div class="small-3 columns no-padding">
-				    			<input type="checkbox" id="btn_open_reward_message">
-				    			<label for="btn_open_reward_message">
-				    				<span class="setting-border"><i class="iconfont">&#xe658;</i></span>
-				    				<p class="setting-tip-word">打赏消息</p>
-				    			</label>
-				    		</div>
-				    		<div class="small-3 columns no-padding">
-				    			<input type="checkbox" id="btn_end-lecture">
-				    			<label for="btn_end-lecture">
-				    				<span class="setting-border"><i class="iconfont">&#xe658;</i></span>
-				    				<p class="setting-tip-word">结束课程</p>
-				    			</label>
-				    			
-				    		</div>
-				    	</div>
+					<!-- 操作按钮 -->
+				    <div class="row operation-control">
+				        <div class="small-3 columns no-padding"><a class="button btn" id="btn_record" href="#"><i class="iconfont">&#xe607;</i>语音</a></div>
+				        <div class="small-3 columns no-padding"><a class="button btn" id="btn_show_text" href="#"><i class="iconfont">&#xe605;</i>文字</a></div>
+				        <div class="small-3 columns no-padding"><a class="button btn" id="btn_display_ppts" href="#"><i class="iconfont">&#xe611;</i>课件</a></div>
+				        <div class="small-3 columns no-padding"><a class="button btn" id="btn_setting" href="#"><i class="iconfont">&#xe601;</i>设置</a></div>
 				    </div>
+				    <div class="operation-box">
+				    	<!--语音发送控件-->
+				    	<div class="record-wrap" id="record_control_box" style="display: none;">
+					        <div class="record-notice">
+					            <p class="record-tips">点击下面图标开始录音</p>
+					        </div>
+					        <div class="record-control-container">
+					            <div class="record-control" id="record_control">
+					                <div class="send-microphone microphone-icon">
+					                    <img class="icon-mic" src="img/icon-mic.png"/>
+					                </div>
+					            </div>
+					            <div class="record-control-pulse"></div>
+					        </div>
+					    </div>
+					    
+					    <!--文字发送控件-->
+				    	<div class="row word-wrap" id="word_control_box" style="display: none;">
+					        <div action="" method="post">
+						        <div class="small-9 columns no-padding">
+						            <label>
+						                <input type="text" placeholder="输入文字内容，1000字内">
+						            </label>
+						        </div>
+						        <div class="small-3 columns no-padding">
+						            <a class="button btn btn-send" href="javascript:;">发送</a>
+						        </div>
+					        </div>
+					    </div>
 
+					    <!-- 设置 -->
+					    <div class="setting-area" id="setting_area_box" style="display:none">
+					    	<div class="row">
+					    		<div class="small-3 columns no-padding">
+					    			<input type="checkbox" id="btn_open_comment" checked="checked">
+					    			<label for="btn_open_comment" class="label-check">
+					    				<span class="setting-border"><i class="iconfont">&#xe658;</i></span>
+					    			    <p class="setting-tip-word">用户评论</p>
+					    			</label>
+					    		</div>
+					    		<div class="small-3 columns no-padding">
+					    			<input type="checkbox" id="btn_open_to_wall">
+					    			<label for="btn_open_to_wall">
+					    				<span class="setting-border"><i class="iconfont">&#xe657;</i></span>
+					    			    <p class="setting-tip-word">自动上墙</p>
+					    			</label>
+					    		</div>
+					    		<div class="small-3 columns no-padding">
+					    			<input type="checkbox" id="btn_open_reward_message">
+					    			<label for="btn_open_reward_message">
+					    				<span class="setting-border"><i class="iconfont">&#xe659;</i></span>
+					    				<p class="setting-tip-word">打赏消息</p>
+					    			</label>
+					    		</div>
+					    		<div class="small-3 columns no-padding">
+					    			<input type="checkbox" id="btn_end-lecture">
+					    			<label for="btn_end-lecture">
+					    				<span class="setting-border"><i class="iconfont">&#xe65a;</i></span>
+					    				<p class="setting-tip-word">结束课程</p>
+					    			</label>
+					    			
+					    		</div>
+					    	</div>
+					    </div>
+					</div>
 			    </div>
+
+				<!-- 学员底部按钮 -->
+				<div class="operation row user-operation" style="display: none;">
+					<div class="small-4 columns no-padding">
+						<a href="javascript:;" class="user-direct-seeding">
+							<p>关注直播间</p>
+						</a>
+					</div>
+					<div class="small-4 columns no-padding">
+						<a href="javascript:;" id="btn_follow_qrcode">
+							<p>雨润心扉mind </p>
+						</a>
+					</div>
+					<div class="small-4 columns no-padding comment-count">
+						<a id="btn_input_comment" href="javascript:;"><i class="iconfont">&#xe60b;</i> 评论 (<span class="discuss-num">0</span>)</a>
+					</div>
+				</div>
 			</div>
 
+			
 			<!-- 上传ppt -->
 			<div class="dialog ppt-area" id="ppt_area" style="display:none;">
 				<div class="ppt-bg">
@@ -840,7 +917,7 @@
 			<div class="dialog dialog-qrcode" id="close_tip_dialog" style="display: none;">
 			    <div class="dialog-center qrcode-bg">
 			        <a href="javascript:;" class="btn-close-qrcode close-dialog"><i class="iconfont">&#xe618;</i></a>
-			        <img class="qrcode-img-tip" src="http://debug.lizhiweike.com/static/img/qrcode-header2.png" alt="">
+			        <img class="qrcode-img-tip" src="img/qrcode-header2.png" alt="">
 			        <div class="lecture-end-cnt">
 			            <p class="lecture-end-tip">当前课程已结束</p>
 			            <div class="qrcode-box">
@@ -856,7 +933,7 @@
 			    <div class="dialog-center qrcode-bg">
 			        <img class="qrcode-img-tip" src="img/qrcode-header.png" alt="">
 			        <div class="qrcode-cnt">
-			            <p>长按二维码预约课程</p>
+			            <p>长按二维码识别，直播开始时通知你</p>
 			            <div class="qrcode-box">
 			            	<img src="img/qrcode2.jpg"/>
 			            </div>
@@ -864,6 +941,21 @@
 			        </div>
 			    </div>
 			</div>
+
+			<!-- 关注讲师弹窗 -->
+			<div class="dialog dialog-follow-tutor" id="dialog_follow_tutor" style="display: none;">
+			    <div class="dialog-center qrcode-bg">
+			        <img class="qrcode-img-tip" src="img/qrcode-header.png" alt="">
+			        <div class="qrcode-cnt">
+			            <p>长按二维码关注讲师</p>
+			            <div class="qrcode-box">
+			            	<img src="img/qrcode2.jpg"/>
+			            </div>
+			            <a href="javascript:;" class="close-dialog btn-close-follow"><p>关闭</p></a>
+			        </div>
+			    </div>
+			</div>
+
 
 			<!-- 断网提醒弹窗 -->
 			<div class="dialog dialog-loading-wrap" id="dialog_reload" style="display: none;">
@@ -885,7 +977,7 @@
 			<!-- 正在加载 -->
 			<div class="dialog dialog-loading-wrap" style="display: none;">
 			    <div class="dialog-center dialog-loading">
-		            <img src="http://debug.lizhiweike.com/static/img/loading.gif" alt="">
+		            <img src="img/loading.gif" alt="">
 		            <p>正在加载...</p>
 			    </div>
 			</div>
@@ -896,7 +988,7 @@
 			        <div class="close-dialog btn-close-dialog">
 			            <i class="iconfont">&#xe618;</i>
 			        </div>
-			        <img src="http://debug.lizhiweike.com/static/img/reward2.png" alt="">
+			        <img src="img/reward2.png" alt="">
 
 			        <div class="btn-reward-show">
 			            <div>
@@ -942,10 +1034,14 @@
 	
 			    </div>
 			</div>
-
-			
+			<!-- 初次进入页面的操作提醒蒙版 -->
+			<div class="dialog first-operate-tip" id="first_operate_tip" style="display:none">
+				<img src="img/student-tip.jpg" style="display:block"/>
+				<img src="img/tutor-tip.jpg" style="display:none"/>
+			</div>
 		</div>
 	</body>
 	<script src="js/jquery.min.js"></script>
+	<script src="js/public-method.js"></script>
 	<script src="js/lecture-room.js"></script>
 </html>

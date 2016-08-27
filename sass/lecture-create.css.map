@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAEA,kBAAkB;EAChB,aAAa,EAAE,GAAG;EAClB,KAAK,ECDC,OAAO",
+"sources": ["lecture-create.scss","variable.scss"],
+"names": [],
+"file": "lecture-create.css"
+}

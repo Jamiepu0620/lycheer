@@ -1,40 +1,131 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
+
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
     <title>创建课程</title>
     <link rel="stylesheet" type="text/css" href="css/foundation.min.css"/>
-    <link rel="stylesheet" type="text/css" href="sass/main.css"/>
-    <link rel="stylesheet" type="text/css" href="sass/lecture-create.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <link rel="stylesheet" href="css/zepto.mdatetimer.css">
+    <link rel="stylesheet" type="text/css" href="css/lecture-create.css"/>
 </head>
-<body>
-<div class="wrapper">
-    <form action="" >
-        <div class="box box-margin-bottom">
-            <div class="row border-line">
-                <div class="small-12 columns">
-                    <p class="create-item-title">本次课程名称</p>
-                    <input type="text" placeholder="请输入课程名称"/>
-                </div>
-            </div>
-            <div class="row lecture-panel">
-                <div class="small-6 columns">
-                    <p>开课时间</p>
-                </div>
-                <div class="small-6 columns">
-                    <p class="text-right">请选择开课时间</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-12 columns">
-                <a class="button btn" href="javascript:;">下一步</a>
-            </div>
-        </div>
-    </form>
-</div>
-</body>
-<script src="js/jquery.min.js"></script>
+	<body>
+		<div class="wrapper">
+		    <form action="" >
+		    	<div class="fill-step">
+		    		<div class="box box-margin-bottom">
+			            <div class="row border-line">
+			                <div class="small-12 columns">
+			                    <p class="create-item-title">本次课程名称</p>
+			                    <input type="text" placeholder="请输入课程名称"/>
+			                </div>
+			            </div>
+			            <div class="row lecture-panel">
+			                <div class="small-6 columns">
+			                    <p>开课时间</p>
+			                </div>
+			                <div class="small-6 columns">
+			                   <input type="text" id="lecture_start_date" class="lecture-start-date" placeholder="点击选择日期" readonly="">
+			                </div>
+			            </div>
+			        </div>
+			        <div class="row lecture-next-box">
+			            <div class="small-12 columns next-step">
+			                <a class="button btn" href="javascript:;">下一步</a>
+			            </div>
+			        </div>
+		    	</div>
+		    	<div class="fill-step type-step">
+		    		<p class="lecture-tip">选择课程类型</p>
+		    		<!--<span class="lecture-check-tip">选择后不能修改</span>-->
+		    		<div class="row lecture-type" id="lecture_type">
+		    			<div class="small-4 columns no-padding open-lecture-box">
+		    				<input type="radio" name="lecture-type" id="open_lecture" value="" checked="checked"/>
+		    				<label for="open_lecture" class="lecture-type-checked">
+		    					<span class="lecture-device"></span>
+		    					<p>公开课程</p>
+		    				</label>
+		    			</div>
+		    			<div class="small-4 columns no-padding password-lecture-box">
+		    				<input type="radio" name="lecture-type" id="password_lecture" value="" />
+		    				<label for="password_lecture">
+		    					<span class="lecture-device"></span>
+		    					<p>加密课程</p>
+		    				</label>
+		    			</div>
+		    			<div class="small-4 columns no-padding pay-lecture-box">
+		    				<input type="radio" name="lecture-type" id="pay_lecture" value="" />
+		    				<label for="pay_lecture">
+		    					<span class="lecture-device"></span>
+		    					<p>付费课程</p>
+		    				</label>
+		    			</div>
+		    		</div>
+		    		<div class="lecture-type-intro">
+		    			<div class="fill-lecture-message open-lecture-box" style="display: block;">
+		    				<p>任何人都可以收听课程</p>
+		    			</div>
+		    			<div class="fill-lecture-message password-lecture-box" style="display: none;">
+		    				<p>设置一个固定密码</p>
+		    				<input type="text" name="" id="" value="" placeholder="请输入课程密码"/>
+		    			</div>
+		    			<div class="fill-lecture-message pay-lecture-box" style="display: none;">
+		    				<p>设置付费金额</p>
+		    				<div class="pay-lecture-input">
+		    					<input type="text" name="" id="" value="" placeholder="最小金额为一元"/>
+		    					<span>元</span>
+		    				</div>
+		    				
+		    			</div>
+		    		</div>
+		    		<div class="row lecture-next-box">
+		    			 <div class="small-6 columns last-step">
+			                <a class="button btn" href="javascript:;">上一步</a>
+			            </div>
+			            <div class="small-6 columns next-step">
+			                <a class="button btn" href="javascript:;">下一步</a>
+			            </div>
+			        </div>
+		    	</div>
+		    	<div class="fill-step type-step">
+		    		<p class="lecture-tip">选择模式</p>
+		    		<div class="row picture-mode-box" id="picture_mode">
+		    			<div class="small-6 columns no-padding ppt-mode">
+		    				<input type="radio" name="picture-mode" id="ppt_mode" value="" checked="checked"/>
+		    				<label for="ppt_mode" class="mode-checked">
+		    					<p>PPT模式</p>
+		    					<div class="ppt-picture">
+		    						<i class="iconfont lecture-checked-device">&#xe655;</i><!--选中的勾选图案-->
+		    						<img src="img/PPT-mode.png"/>
+		    					</div>
+		    				</label>
+		    			</div>
+		    			<div class="small-6 columns no-padding text-mode">
+		    				<input type="radio" name="picture-mode" id="text_mode" value=""/>
+		    				<label for="text_mode">
+		    					<p>图文模式</p>
+		    					<div class="text-picture">
+		    						<i class="iconfont lecture-checked-device">&#xe655;</i><!--选中的勾选图案-->
+		    						<img src="img/text-mode.png"/>
+		    					</div>
+		    				</label>
+		    			</div>
+		    		</div>
+		    		<div class="row lecture-next-box">
+		    			 <div class="small-6 columns last-step">
+			                <a class="button btn" href="javascript:;">上一步</a>
+			            </div>
+			            <div class="small-6 columns">
+			                <a class="button btn" href="javascript:;">完成</a>
+			            </div>
+			        </div>
+		    	</div>
+		    </form>
+		</div>
+	</body>
+	<script src="js/zepto.js"></script>
+	<script src="js/zepto.mdatetimer.js"></script>
+	<script src="js/lecture-create.js" type="text/javascript" charset="utf-8"></script>
 </html>

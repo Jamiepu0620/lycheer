@@ -1,7 +1,7 @@
 @import "variable";
 
 body {
-  background: #fbf9fe;
+  background: $bg;
   font-size: 16px;
   max-width: 480px;
   margin: 0 auto;
@@ -42,13 +42,13 @@ ul, li, ol {
   list-style: none;
 }
 
-input[type="text"], textarea {
+input[type="text"], textarea[type="text"] {
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: none;
 }
 
-input[type="text"]:focus, textarea:focus {
+input[type="text"]:focus, textarea[type="text"]:focus {
   border-color: $green-border;
 }
 
@@ -58,6 +58,21 @@ input:not([type]), input[type="text"], input[type="password"], input[type="date"
 
 input[type="text"]:focus, textarea:focus {
   background: #ffffff;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color: $p-color;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: $p-color;
+  opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: $p-color;
+  opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: $p-color;
 }
 
 .clearfix:after {
@@ -75,40 +90,45 @@ input[type="text"]:focus, textarea:focus {
   float: right;
 }
 
-
 //盒子
 
-.box{
+.box {
   background: #fff;
   box-shadow: 0 1px 1px $shadow;
-  padding:8px 0;
+  padding: 8px 0;
 }
 
-.box-margin-top{
+.box-margin-top {
   margin-top: 16px;
 }
 
-.box-margin-bottom{
+.box-margin-bottom {
   margin-bottom: 16px;
 }
 
-.border-line{
+.border-line {
   border-bottom: 1px solid $shadow;
+}
+
+.border-line:last-child {
+  border: none;
 }
 
 /*单元格面板*/
 
-.lecture-panel{
-  p{
+.lecture-panel {
+  padding: 8px 0;
+  p {
     line-height: 40px;
   }
-  .text-right{
+  .text-right {
     color: $p-color;
   }
-  .iconfont-right{
+  .iconfont-right {
     text-align: right;
+    padding-left: 0;
   }
-  .iconfont{
+  .iconfont {
     color: $p-color;
     line-height: 40px;
   }
@@ -145,6 +165,16 @@ input[type="text"]:focus, textarea:focus {
   margin: auto;
   line-height: 40px;
   background: $green;
+}
+
+.btn:hover{
+  background:$green-hover ;
+}
+
+.btn-line{
+  color: $green;
+  border: 1px solid $green;
+  background-color: rgba(0,0,0,0);
 }
 
 .row .row {
@@ -317,7 +347,7 @@ ul {
 }
 
 @media (max-width: 360px) {
-  p, .btn {
+  p {
     font-size: 14px;
   }
 }

@@ -35,12 +35,12 @@ p {
 ul, li, ol {
   list-style: none; }
 
-input[type="text"], textarea {
+input[type="text"], textarea[type="text"] {
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: none; }
 
-input[type="text"]:focus, textarea:focus {
+input[type="text"]:focus, textarea[type="text"]:focus {
   border-color: #d7f4ed; }
 
 input:not([type]), input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], textarea {
@@ -48,6 +48,24 @@ input:not([type]), input[type="text"], input[type="password"], input[type="date"
 
 input[type="text"]:focus, textarea:focus {
   background: #ffffff; }
+
+::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: #9e9e9e; }
+
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #9e9e9e;
+  opacity: 1; }
+
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #9e9e9e;
+  opacity: 1; }
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #9e9e9e; }
 
 .clearfix:after {
   content: "";
@@ -75,16 +93,22 @@ input[type="text"]:focus, textarea:focus {
 .border-line {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
 
+.border-line:last-child {
+  border: none; }
+
 /*单元格面板*/
-.lecture-panel p {
-  line-height: 40px; }
-.lecture-panel .text-right {
-  color: #9e9e9e; }
-.lecture-panel .iconfont-right {
-  text-align: right; }
-.lecture-panel .iconfont {
-  color: #9e9e9e;
-  line-height: 40px; }
+.lecture-panel {
+  padding: 8px 0; }
+  .lecture-panel p {
+    line-height: 40px; }
+  .lecture-panel .text-right {
+    color: #9e9e9e; }
+  .lecture-panel .iconfont-right {
+    text-align: right;
+    padding-left: 0; }
+  .lecture-panel .iconfont {
+    color: #9e9e9e;
+    line-height: 40px; }
 
 /*字体图标*/
 @font-face {
@@ -113,6 +137,14 @@ input[type="text"]:focus, textarea:focus {
   margin: auto;
   line-height: 40px;
   background: #60d0b5; }
+
+.btn:hover {
+  background: #48bb9f; }
+
+.btn-line {
+  color: #60d0b5;
+  border: 1px solid #60d0b5;
+  background-color: transparent; }
 
 .row .row {
   margin: 0; }
@@ -254,7 +286,7 @@ ul {
     margin-right: 4px; }
 
 @media (max-width: 360px) {
-  p, .btn {
+  p {
     font-size: 14px; } }
 
 /*# sourceMappingURL=main.css.map */

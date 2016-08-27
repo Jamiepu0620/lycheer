@@ -1,160 +1,325 @@
 @import "variable";
+
 body {
-	background: #f5f5f5;
-	font-size: 16px;
-	max-width: 480px;
-	margin: 0 auto;
-	overflow:hidden;
+  background: #fbf9fe;
+  font-size: 16px;
+  max-width: 480px;
+  margin: 0 auto;
+  position: relative;
 }
 
 .hide {
-	display: none !important;
+  display: none !important;
 }
 
 .wrapper {
-	height:100%;
-	overflow:hidden;
-	margin: auto;
-	// padding-bottom: 56px;
-	font-family: 'helvetica neue', tahoma, 'hiragino sans gb', stheiti, 'wenquanyi micro hei', "微软雅黑", sans-serif;
-}
-
-.wrapper {
-	max-width: 768px;
-	min-height: 320px;
+  height: 100%;
+  max-width: 768px;
+  min-height: 320px;
+  overflow: auto;
+  margin: auto;
+  padding-bottom: 56px;
+  font-family: 'helvetica neue', tahoma, 'hiragino sans gb', stheiti, 'wenquanyi micro hei', "微软雅黑", sans-serif;
 }
 
 img {
-	border: 0 none;
-	width: 100%;
-	height: auto;
-	max-width: 100%;
-	vertical-align: top;
-	letter-spacing: 0;
+  border: 0 none;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  vertical-align: top;
+  letter-spacing: 0;
 }
 
 p {
-	margin-bottom: 0;
-	color: black;
-	line-height: 1.5em;
-	word-break: break-all;
+  margin-bottom: 0;
+  color: black;
+  line-height: 1.5em;
+  word-break: break-all;
 }
 
-ul,li,ol {
-	list-style: none;
+ul, li, ol {
+  list-style: none;
 }
 
-input[type="text"],textarea {
-	background: #ffffff;
-	border: 1px solid rgba(0, 0, 0, 0.1);
-	box-shadow: none;
+input[type="text"], textarea {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: none;
 }
 
-input:not([type]),input[type="text"],input[type="password"],input[type="date"],input[type="datetime"],input[type="datetime-local"],input[type="month"],input[type="week"],input[type="email"],input[type="number"],input[type="search"],input[type="tel"],input[type="time"],input[type="url"],input[type="color"],textarea {
-	box-shadow: none;
+input[type="text"]:focus, textarea:focus {
+  border-color: $green-border;
 }
 
-input[type="text"]:focus,textarea:focus {
-	background: #ffffff;
+input:not([type]), input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], textarea {
+  box-shadow: none;
 }
+
+input[type="text"]:focus, textarea:focus {
+  background: #ffffff;
+}
+
 .clearfix:after {
-    content: "";
-    display: block;
-    clear: both;
-    height: 0;
+  content: "";
+  display: block;
+  clear: both;
+  height: 0;
 }
+
 .fl {
-    float: left;
+  float: left;
 }
+
 .fr {
-    float: right;
+  float: right;
 }
+
+
+//盒子
+
+.box{
+  background: #fff;
+  box-shadow: 0 1px 1px $shadow;
+  padding:8px 0;
+}
+
+.box-margin-top{
+  margin-top: 16px;
+}
+
+.box-margin-bottom{
+  margin-bottom: 16px;
+}
+
+.border-line{
+  border-bottom: 1px solid $shadow;
+}
+
+/*单元格面板*/
+
+.lecture-panel{
+  p{
+    line-height: 40px;
+  }
+  .text-right{
+    color: $p-color;
+  }
+  .iconfont-right{
+    text-align: right;
+  }
+  .iconfont{
+    color: $p-color;
+    line-height: 40px;
+  }
+}
+
 /*字体图标*/
 @font-face {
-    font-family: 'iconfont';
-    src: url("../fonts/iconfont.eot");
-    /* IE9*/
-    src: url("../fonts/iconfont.eot?#iefix") format("embedded-opentype"), url("../fonts/iconfont.woff") format("woff"), url("../fonts/iconfont.ttf") format("truetype"), url("../fonts/iconfont.svg#iconfont") format("svg");
-    /* iOS 4.1- */
+  font-family: 'iconfont';
+  src: url("../fonts/iconfont.eot");
+  /* IE9*/
+  src: url("../fonts/iconfont.eot?#iefix") format("embedded-opentype"), url("../fonts/iconfont.woff") format("woff"), url("../fonts/iconfont.ttf") format("truetype"), url("../fonts/iconfont.svg#iconfont") format("svg");
+  /* iOS 4.1- */
 }
 
 .iconfont {
-    font-family: "iconfont" !important;
-    font-style: normal;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-stroke-width: 0.2px;
-    -moz-osx-font-smoothing: grayscale;
+  font-family: "iconfont" !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.no-padding{
-	padding: 0;
+.no-padding {
+  padding: 0;
 }
 
 .btn {
-	font-size: 1rem;
-	text-align: center;
-	display: inline-block;
-	width: 100%;
-	color: #ffffff;
-	padding: 0;
-	margin: auto;
-	line-height: 40px;
+  font-size: 1rem;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  color: #ffffff;
+  padding: 0;
+  margin: auto;
+  line-height: 40px;
+  background: $green;
+}
+
+.row .row {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+}
+
+// 预加载页面
+.pre-load {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  padding-top: 16%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 999;
+}
+
+.sk-wave {
+  margin: 16px auto;
+  width: 50px;
+  height: 40px;
+  text-align: center;
+  font-size: 10px;
+}
+
+.sk-wave .sk-rect {
+  background-color: $green;
+  height: 100%;
+  width: 6px;
+  display: inline-block;
+  -webkit-animation: sk-waveStretchDelay 1.2s infinite ease-in-out;
+  animation: sk-waveStretchDelay 1.2s infinite ease-in-out;
+}
+
+.sk-wave .sk-rect1 {
+  -webkit-animation-delay: -1.2s;
+  animation-delay: -1.2s;
+}
+
+.sk-wave .sk-rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+
+.sk-wave .sk-rect3 {
+  -webkit-animation-delay: -1s;
+  animation-delay: -1s;
+}
+
+.sk-wave .sk-rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+.sk-wave .sk-rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+
+@-webkit-keyframes sk-waveStretchDelay {
+  0%, 40%, 100% {
+    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.4);
+  }
+  20% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+
+@keyframes sk-waveStretchDelay {
+  0%, 40%, 100% {
+    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.4);
+  }
+  20% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
 }
 
 /*头像大小*/
-.portrait{
-	width: 40px;
-	height: 40px;
-	margin: 0 auto;
-	border: 1px solid #ffffff;
-    border-radius: 100%;
-    overflow: hidden;
+.portrait {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+  border: 1px solid #ffffff;
+  border-radius: 100%;
+  overflow: hidden;
 }
 
 /* 浮层 */
 .float-widget {
-    background: rgba(0, 0, 0, 0.4);
-    display: inline-block;
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    line-height: 40px;
-    z-index: 9;
+  background: rgba(0, 0, 0, 0.4);
+  display: inline-block;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  z-index: 9;
 }
+
 /* 弹窗背景 */
 .dialog {
-	width: 100%;
-	height: 100%;
-	max-width: 768px;
-	margin:0 auto;
-	background-color: rgba(0, 0, 0, 0.3);
-	position: fixed;
-	top: 0;
-	left: 0;
-	color: #000;
-	text-align: center;
-	z-index: 99;
-	display: none;
+  width: 100%;
+  height: 100%;
+  max-width: 768px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: #000;
+  text-align: center;
+  z-index: 99;
+  display: none;
 }
 
 // 弹窗居中
-.dialog-center{
-    position: absolute;
-    left:50%;
-    top: 50%;
-    -webkit-transform: translate(-50%,-50%); 
-    -ms-transform: translate(-50%,-50%); 
-    transform: translate(-50%,-50%); 
-    background: #fff;
-    border-radius: 12px;
-    text-align: center;
+.dialog-center {
+  width: 72%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 12px;
+  text-align: center;
+  overflow: hidden;
 }
 
-@media (max-width: 360px){
-	p,.btn{
-		font-size: 14px;
-	}
+// 弹窗关闭按钮
+.btn-close-dialog {
+  position: absolute;
+  top: 0;
+  right: 16px;
+  font-size: 24px;
+  color: #9e9e9e;
+  z-index: 100;
+  cursor: pointer;
+}
+
+// 页脚的固定
+.fix-bottom {
+  width: 100%;
+  height: 48px;
+  background: url("../img/bottom.png") center;
+  background-size: cover;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  p {
+    color: #fff;
+    line-height: 48px;
+  }
+  .iconfont {
+    margin-right: 4px;
+  }
+}
+
+@media (max-width: 360px) {
+  p, .btn {
+    font-size: 14px;
+  }
 }
 
 

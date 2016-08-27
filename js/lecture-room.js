@@ -4,14 +4,6 @@ $(function(){
 		$(this).parents(".dialog").hide();
 	});
 
-	// 弹窗绝对居中
-	$.fn.dialog_center = function(){
-		var dialog_content = $(this);
-		var dialog_width = dialog_content.width();
-		var dialog_height = dialog_content.height();
-		dialog_content.css({"margin-left": - dialog_width/2 +"px","margin-top": - dialog_height/2 + "px"});
-	}
-
 	// 点击语音输入按钮
 		$('#btn_record').click(function(){
 			$("#record_control_box").toggle();
@@ -70,16 +62,6 @@ $(function(){
 			$("#comment_area").toggleClass("comment-setting-bottom");
 		});
 
-	// 设置控件按钮点击
-	$("#setting_area_box").on("click","label",function(){
-		var checkbox = $(this).siblings("input");
-		if(checkbox.is(':checked')){
-			$(this).addClass("label-check");
-		}
-		else{
-			$(this).removeClass("label-check");
-		}
-	});
 
 	// 语音控件与文字控件框关闭
 	$('#lecture_content').click(function(){
@@ -105,7 +87,7 @@ $(function(){
 
 	
 
-	// 评论显示与关闭
+	// 右下角评论显示与关闭
 	(function(){
 		var isCommentShow = 0;
 		$("#switch_on").click(function(){
@@ -146,10 +128,20 @@ $(function(){
 		});
 	})();
 
-	// 输入评论
+	// 讲师输入评论
 	$("#btn_comment_edit").click(function(){
 		$("#comment_page").show();
 	});
+
+	// 学员输入评论
+	$("#btn_input_comment").click(function(){
+		$("#comment_page").show();
+	});
+
+	// 关注讲师二维码弹窗
+	$("#btn_follow_qrcode").click(function(){
+		$("#dialog_follow_tutor").show();
+	})
 
 	// 打赏显示
 	$(".reward").click(function(){
@@ -181,8 +173,29 @@ $(function(){
 	$("#cancel_reply").click(function(){
 		$("#reply_bar").hide();
 	});
+
+
+	// 初次进入页面的操作提醒
+    function checkFirstOpen(){
+    	if(localStorage.pagecount)
+			  {
+			  	localStorage.pagecount=Number(localStorage.pagecount) +1;
+			  }
+		else
+		  {
+		 	 localStorage.pagecount=1;
+		  }
+		if (localStorage.pagecount == 1)
+		  {
+			$('#first_operate_tip').hide();
+		  }
+    }
 	
-	
+	$('#first_operate_tip').click(function(){
+    	$(this).hide();
+    });
+    
+    checkFirstOpen();
 
 
 })

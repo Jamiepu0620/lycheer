@@ -58,7 +58,6 @@ p.identity {
 
 .talk-voice {
   display: inline-block;
-  width: 24%;
   height: 38px;
   max-width: 60%;
   background: #ffffff;
@@ -97,11 +96,9 @@ p.identity {
 
 .talk-control {
   display: inline-block;
-  width: 24px;
-  height: 18px;
-  line-height: 18px;
-  background: rgba(0, 0, 0, 0.4);
   position: absolute;
+  right: auto;
+  top: auto;
   text-align: center;
   margin-top: 2px;
   margin-left: 4px;
@@ -111,14 +108,26 @@ p.identity {
   color: #ffffff;
   line-height: 1em; }
 
-.reply {
-  width: auto;
-  padding: 0 4px;
-  margin-left: 34px; }
-  .reply p {
-    color: #fff;
-    line-height: 18px;
-    font-size: 12px; }
+.voice-sending {
+  background: transparent; }
+
+.send-failed {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  color: #fff;
+  background: #ff5341;
+  border-radius: 100%; }
+
+.send-failed-dec {
+  display: inline-block;
+  width: auto; }
+
+.send-failed-dec p {
+  color: #9e9e9e;
+  line-height: 24px; }
 
 .talk-img-wrap {
   max-width: 36%;
@@ -142,10 +151,33 @@ p.identity {
   line-height: 1.5em;
   font-size: 0.875rem; }
 
+.revoke {
+  width: 24px;
+  height: 18px;
+  line-height: 18px;
+  background: rgba(0, 0, 0, 0.4); }
+
+.reply {
+  display: inline-block;
+  width: auto;
+  padding: 0 4px;
+  margin-left: 34px;
+  background: rgba(0, 0, 0, 0.4); }
+  .reply p {
+    color: #fff;
+    line-height: 18px;
+    font-size: 12px; }
+
+.original-text {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 4px; }
+
 .lecture-content-box {
   width: 100%;
   height: 100%;
-  overflow-y: scroll; }
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch; }
 
 .lecture-content {
   padding: 0 0 56px 0; }
@@ -158,9 +190,22 @@ p.identity {
   z-index: 99; }
 
 .operation-control {
+  height: 42px;
   line-height: 40px;
   border-bottom: 1px solid #f5f5f5;
   background: #fff; }
+
+.user-operation {
+  height: 40px;
+  line-height: 40px;
+  background: #fff; }
+  .user-operation p {
+    line-height: 40px; }
+  .user-operation .comment-count {
+    background: #ff5341; }
+  .user-operation .comment-count a {
+    display: block;
+    color: #fff; }
 
 .operation-box {
   background: #fff; }
@@ -355,7 +400,8 @@ p.identity {
   height: 100%;
   padding: 50px 0 40px 0;
   background: #fff;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch; }
 
 .not-send a {
   color: #ff5341; }
@@ -500,7 +546,8 @@ p.identity {
 .comment-wrap {
   margin-bottom: 34px;
   height: 268px;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch; }
 
 .primary-sentence {
   background: rgba(0, 0, 0, 0.4);
@@ -550,7 +597,8 @@ p.identity {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0; }
+  right: 0;
+  z-index: 8; }
   .ppt-operate-img img {
     width: auto;
     max-height: 164px; }
@@ -581,7 +629,8 @@ p.identity {
   width: 100%;
   height: 100%;
   background: #fff;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch; }
 
 .comment-list {
   padding-bottom: 110px; }
@@ -698,15 +747,6 @@ p.identity {
 
 .qrcode-cnt {
   padding: 24px 16px 0 16px; }
-
-.btn-close-dialog {
-  position: absolute;
-  top: 0;
-  right: 8px;
-  font-size: 24px;
-  color: #9e9e9e;
-  z-index: 100;
-  cursor: pointer; }
 
 .reload-tip {
   font-size: 80px;
@@ -833,7 +873,7 @@ p.identity {
   color: #9e9e9e; }
 
 .setting-area .setting-tip-word {
-  font-size: 0.857px;
+  font-size: 0.875rem;
   color: #9e9e9e;
   padding-top: 8px; }
 
@@ -843,5 +883,11 @@ p.identity {
     color: #60d0b5; }
 .label-check .setting-tip-word {
   color: #60d0b5; }
+
+.first-operate-tip img {
+  height: 100%; }
+
+.user-operation div {
+  text-align: center; }
 
 /*# sourceMappingURL=lecture-room.css.map */

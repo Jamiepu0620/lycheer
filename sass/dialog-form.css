@@ -1,0 +1,35 @@
+.wrapper {
+  position: relative; }
+
+.dialog-form {
+  background: #fbf9fe;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: -768px;
+  z-index: 2;
+  transition: right 0.4s;
+  -moz-transition: right 0.4s;
+  /* Firefox 4 */
+  -webkit-transition: right 0.4s;
+  /* Safari and Chrome */
+  -o-transition: right 0.4s;
+  /* Opera */ }
+
+.dialog-form-title {
+  padding: 16px;
+  text-align: center;
+  color: #9e9e9e; }
+
+.dialog-form-subtitle {
+  padding: 0 0 4px 8px; }
+
+.dialog-form-item textarea {
+  height: 200px;
+  border: 2px dashed #d7f4ed; }
+
+.dialog-form-reward input[type="text"] {
+  text-align: center; }
+
+/*# sourceMappingURL=dialog-form.css.map */

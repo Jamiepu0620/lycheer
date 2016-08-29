@@ -101,6 +101,11 @@ input[type="text"]:focus, textarea:focus {
   padding: 8px 0; }
   .lecture-panel p {
     line-height: 40px; }
+  .lecture-panel .portrait {
+    width: 32px;
+    height: 32px;
+    margin-top: 2px;
+    float: right; }
   .lecture-panel .text-right {
     color: #9e9e9e; }
   .lecture-panel .iconfont-right {
@@ -109,6 +114,18 @@ input[type="text"]:focus, textarea:focus {
   .lecture-panel .iconfont {
     color: #9e9e9e;
     line-height: 40px; }
+  .lecture-panel input, .lecture-panel select, .lecture-panel select:focus {
+    margin-bottom: 0;
+    border: none !important;
+    background: none !important;
+    direction: rtl;
+    font-size: 1rem;
+    color: #9e9e9e; }
+  .lecture-panel select option {
+    direction: rtl; }
+
+.lecture-panel-wrap:last-child .border-line {
+  border: none; }
 
 /*字体图标*/
 @font-face {

@@ -1,18 +1,3 @@
-.lecture-panel .portrait {
-  width: 32px;
-  height: 32px;
-  margin-top: 2px;
-  float: right; }
 
-.live-room-upload {
-  padding: 24px;
-  text-align: center; }
-  .live-room-upload .upload-img {
-    width: 120px;
-    height: 120px;
-    margin: auto; }
-
-.lecture-panel-wrap:last-child .border-line {
-  border: none; }
 
 /*# sourceMappingURL=live-room-edit.css.map */

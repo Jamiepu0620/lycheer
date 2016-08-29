@@ -60,18 +60,25 @@ input[type="text"]:focus, textarea:focus {
   background: #ffffff;
 }
 
-::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
   color: $p-color;
 }
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
   color: $p-color;
-  opacity:  1;
+  opacity: 1;
 }
-::-moz-placeholder { /* Mozilla Firefox 19+ */
+
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
   color: $p-color;
-  opacity:  1;
+  opacity: 1;
 }
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
   color: $p-color;
 }
 
@@ -121,6 +128,12 @@ input[type="text"]:focus, textarea:focus {
   p {
     line-height: 40px;
   }
+  .portrait {
+    width: 32px;
+    height: 32px;
+    margin-top: 2px;
+    float: right;
+  }
   .text-right {
     color: $p-color;
   }
@@ -131,6 +144,23 @@ input[type="text"]:focus, textarea:focus {
   .iconfont {
     color: $p-color;
     line-height: 40px;
+  }
+  input,select,select:focus {
+    margin-bottom: 0;
+    border: none !important;
+    background: none !important;
+    direction: rtl;
+    font-size: 1rem;
+    color: $p-color;
+  }
+  select option {
+    direction: rtl;
+  }
+}
+
+.lecture-panel-wrap:last-child{
+  .border-line{
+    border: none;
   }
 }
 
@@ -167,14 +197,14 @@ input[type="text"]:focus, textarea:focus {
   background: $green;
 }
 
-.btn:hover{
-  background:$green-hover ;
+.btn:hover {
+  background: $green-hover;
 }
 
-.btn-line{
+.btn-line {
   color: $green;
   border: 1px solid $green;
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .row .row {
